@@ -131,6 +131,23 @@ section.pad{padding:88px 5%;}
 .form button{background:var(--terracota);color:#fff;border:none;padding:13px 28px;font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
 .form button:hover{background:#a84415;}
 
+/* Custom Select Styles */
+.custom-select{position:relative;width:100%;margin-bottom:11px;}
+.select-display{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.11);color:rgba(255,255,255,0.55);padding:12px 16px;font-size:14px;font-family:'Inter',sans-serif;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-radius:0;transition:border-color .2s;user-select:none;}
+.select-display:hover{border-color:rgba(255,255,255,0.2);}
+.select-display.active{border-color:var(--oro);background:rgba(255,255,255,0.08);}
+.select-arrow{width:18px;height:18px;transition:transform .2s;flex-shrink:0;margin-left:8px;}
+.select-display.active .select-arrow{transform:rotate(180deg);}
+.select-placeholder{flex:1;text-align:left;}
+
+.select-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-top:none;max-height:200px;overflow-y:auto;z-index:1000;display:none;}
+.select-dropdown.active{display:block;}
+.select-option{padding:12px 16px;font-size:14px;color:#1C1410;background:#fff;cursor:pointer;transition:background .15s,color .15s;border-bottom:1px solid #f0f0f0;}
+.select-option:last-child{border-bottom:none;}
+.select-option:hover{background:#f5f5f5;color:var(--terracota);font-weight:500;}
+.select-option.selected{background:var(--terracota);color:#fff;font-weight:500;}
+.select-option[data-value=""]{display:none;}
+
 footer{background:#120d09;padding:48px 5% 28px;}
 .foot-inner{max-width:1280px;margin:0 auto;}
 .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px;}
@@ -488,19 +505,29 @@ footer{background:#120d09;padding:48px 5% 28px;}
         </div>
       </div>
       <div>
-        <form class="form" onsubmit="return false;">
-          <input type="text" placeholder="Tu nombre completo">
-          <input type="email" placeholder="Tu email">
-          <input type="tel" placeholder="Tu WhatsApp o teléfono">
-          <input type="text" placeholder="Fechas de estadía (ej: 10/07 al 15/07)">
-          <select>
-            <option value="">Cantidad de personas</option>
-            <option>1 o 2 personas</option>
-            <option>3 o 4 personas</option>
-            <option>5 o 6 personas</option>
-          </select>
-          <textarea placeholder="Consultas adicionales, servicios que necesitás..."></textarea>
-          <button type="button">Enviar consulta →</button>
+        <form id="contactForm" class="form">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+          <input type="email" id="email" name="email" placeholder="Tu email" required>
+          <input type="tel" id="telefono" name="telefono" placeholder="Tu WhatsApp o teléfono" required>
+          <input type="text" id="fechas" name="fechas" placeholder="Fechas de estadía (ej: 10/07 al 15/07)">
+          <div class="custom-select">
+            <div class="select-display" id="selectDisplay">
+              <span class="select-placeholder">Cantidad de personas</span>
+              <svg class="select-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <div class="select-dropdown" id="selectDropdown">
+              <div class="select-option" data-value="">Cantidad de personas</div>
+              <div class="select-option" data-value="1 o 2 personas">1 o 2 personas</div>
+              <div class="select-option" data-value="3 o 4 personas">3 o 4 personas</div>
+              <div class="select-option" data-value="5 o 6 personas">5 o 6 personas</div>
+            </div>
+            <input type="hidden" id="cantidad_personas" name="cantidad_personas" value="">
+          </div>
+          <textarea id="mensaje" name="mensaje" placeholder="Consultas adicionales..." required></textarea>
+          <button type="submit" id="submitBtn">Enviar consulta →</button>
+          <div id="formMessage" style="display:none;margin-top:15px;padding:12px 18px;border-radius:4px;text-align:center;font-weight:500;font-size:14px;"></div>
         </form>
       </div>
     </div>
@@ -571,5 +598,148 @@ footer{background:#120d09;padding:48px 5% 28px;}
   </div>
 </footer>
 
+<script>
+// Custom Select Handler
+(function() {
+  const selectDisplay = document.getElementById('selectDisplay');
+  const selectDropdown = document.getElementById('selectDropdown');
+  const selectOptions = document.querySelectorAll('.select-option');
+  const hiddenInput = document.getElementById('cantidad_personas');
+
+  // Toggle dropdown
+  selectDisplay.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectDisplay.classList.toggle('active');
+    selectDropdown.classList.toggle('active');
+  });
+
+  // Handle option selection
+  selectOptions.forEach(option => {
+    option.addEventListener('click', (e) => {
+      const value = option.dataset.value;
+      const text = option.textContent;
+      
+      // Update hidden input
+      hiddenInput.value = value;
+      
+      // Update display
+      const placeholder = selectDisplay.querySelector('.select-placeholder');
+      if (value === '') {
+        placeholder.textContent = 'Cantidad de personas';
+        placeholder.style.color = 'rgba(255,255,255,0.55)';
+      } else {
+        placeholder.textContent = text;
+        placeholder.style.color = 'rgba(255,255,255,0.9)';
+      }
+      
+      // Update selected state
+      selectOptions.forEach(opt => opt.classList.remove('selected'));
+      if (value !== '') {
+        option.classList.add('selected');
+      }
+      
+      // Close dropdown
+      selectDisplay.classList.remove('active');
+      selectDropdown.classList.remove('active');
+      
+      e.stopPropagation();
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-select')) {
+      selectDisplay.classList.remove('active');
+      selectDropdown.classList.remove('active');
+    }
+  });
+})();
+</script>
+
+<script>
+(function() {
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMessage = document.getElementById('formMessage');
+
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+    const fechas = document.getElementById('fechas').value.trim();
+    const cantidad_personas = document.getElementById('cantidad_personas').value.trim();
+
+    if (!nombre || !email || !telefono || !mensaje) {
+      mostrarError('Completa todos los campos requeridos');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      mostrarError('Email inválido');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
+    try {
+      const response = await fetch('https://formspree.io/f/xaqgqrjb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          nombre: nombre,
+          email: email,
+          telefono: telefono,
+          fechas: fechas,
+          cantidad_personas: cantidad_personas,
+          mensaje: mensaje
+        })
+      });
+
+      if (response.ok) {
+        formMessage.textContent = '✅ ¡Mensaje enviado! Te contactaremos pronto.';
+        formMessage.style.background = '#d4edda';
+        formMessage.style.color = '#155724';
+        formMessage.style.border = '1px solid #c3e6cb';
+        formMessage.style.display = 'block';
+        form.reset();
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar consulta →';
+        setTimeout(() => {
+          formMessage.style.display = 'none';
+        }, 5000);
+      } else {
+        mostrarError('Error al enviar. Intenta de nuevo.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar consulta →';
+      }
+    } catch (error) {
+      mostrarError('Error de conexión. Intenta de nuevo.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar consulta →';
+    }
+  });
+
+  function mostrarError(msg) {
+    formMessage.textContent = '❌ ' + msg;
+    formMessage.style.background = '#f8d7da';
+    formMessage.style.color = '#721c24';
+    formMessage.style.border = '1px solid #f5c6cb';
+    formMessage.style.display = 'block';
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }
+})();
+</script>
 </body>
 </html>
