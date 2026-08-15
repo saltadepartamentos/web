@@ -263,7 +263,7 @@ WhatsApp
 <h2 class="s-title">Sitios imperdibles<br><em>para visitar</em></h2>
 <div class="tur-grid">
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-virgen-del-cerro.jpg" alt="Virgen del Cerro" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-virgen-del-cerro.jpg" alt="Virgen del Cerro" loading="lazy">
 <div class="tur-body">
 <h3>Virgen del Cerro</h3>
 <p>Santuario en el Cerro de la Virgen, uno de los sitios de peregrinación más visitados del norte argentino.</p>
@@ -271,7 +271,7 @@ WhatsApp
 </div>
 </div>
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-cerro-san-bernardo.jpg" alt="Teleférico al Cerro San Bernardo" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-cerro-san-bernardo.jpg" alt="Teleférico al Cerro San Bernardo" loading="lazy">
 <div class="tur-body">
 <h3>Cerro San Bernardo</h3>
 <p>Mirador natural con vista panorámica sobre toda Salta. Acceso en teleférico o por sendero peatonal.</p>
@@ -279,7 +279,7 @@ WhatsApp
 </div>
 </div>
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-paseo-guemes.jpg" alt="Paseo Güemes" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-paseo-guemes.jpg" alt="Paseo Güemes" loading="lazy">
 <div class="tur-body">
 <h3>Paseo Güemes</h3>
 <p>La calle más animada de Salta. Peñas folklóricas, bares y restaurantes en un ambiente auténticamente norteño.</p>
@@ -287,7 +287,7 @@ WhatsApp
 </div>
 </div>
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-tren-a-las-nubes.jpg" alt="Tren a las Nubes" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-tren-a-las-nubes.jpg" alt="Tren a las Nubes" loading="lazy">
 <div class="tur-body">
 <h3>Tren a las Nubes</h3>
 <p>Uno de los recorridos ferroviarios más espectaculares del mundo, atravesando la Puna hasta el viaducto La Polvorilla.</p>
@@ -295,7 +295,7 @@ WhatsApp
 </div>
 </div>
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-cabildo-catedral.jpg" alt="Catedral de Salta" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-cabildo-catedral.jpg" alt="Catedral de Salta" loading="lazy">
 <div class="tur-body">
 <h3>Cabildo e Iglesia Catedral</h3>
 <p>La Plaza 9 de Julio y sus monumentos históricos forman el núcleo colonial de la ciudad.</p>
@@ -303,7 +303,7 @@ WhatsApp
 </div>
 </div>
 <div class="tur-card">
-<img class="tur-card-img" src="images/tur-cafayate-quebrada.jpg" alt="Quebrada de las Conchas, Cafayate" loading="lazy">
+<img class="tur-card-img" src="images/turismo/tur-cafayate-quebrada.jpg" alt="Quebrada de las Conchas, Cafayate" loading="lazy">
 <div class="tur-body">
 <h3>Cafayate y Quebrada</h3>
 <p>Viñedos de altura, bodegas y la majestuosa Quebrada de las Conchas. Excursión de un día imperdible.</p>
@@ -394,6 +394,7 @@ Escribinos por WhatsApp
 </div>
 </footer>
 
+<script src="depto-data.js"></script>
 <script>
 /* ============================================================
    CONFIGURACIÓN
@@ -403,97 +404,11 @@ Escribinos por WhatsApp
    ============================================================ */
 const WORKER_URL = "https://shiny-term-d478.deptos-travelsalta.workers.dev";
 
-/* ============================================================
-   DATOS DE LOS DEPARTAMENTOS
-   NOTA: las fotos son placeholders de Unsplash. Reemplazar la
-   propiedad "photo" de cada depto por las fotos reales (subirlas
-   a la carpeta /images del repo y apuntar la ruta acá).
-   ============================================================ */
-const DEPTOS = [
-  {
-    id: "depto-8vo-2",
-    nombre: "Depto 8vo 2",
-    photo: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=900&q=80&auto=format&fit=crop",
-    huespedes: 6,
-    dormitorios: 2,
-    tamano: 83,
-    camas: "2 individuales + 2 dobles",
-    amenities: ["Aire acondicionado","WiFi","TV","Cocina equipada","Cochera opcional","Pileta en azotea","Quincho con asador"],
-    descripcion: "Amplio departamento de 2 dormitorios con cochera opcional, a pocas cuadras del centro de Salta. Totalmente amoblado y equipado. El edificio cuenta con pileta en azotea y quincho con asador.",
-    precioDesde: 75000,
-    hasSync: true,
-    reservaLinks: { airbnb: "https://www.airbnb.com.ar/rooms/38852148" }
-  },
-  {
-    id: "depto-8vo-3",
-    nombre: "Depto 8vo 3",
-    photo: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=900&q=80&auto=format&fit=crop",
-    huespedes: 4,
-    dormitorios: 2,
-    tamano: 80,
-    camas: "2 individuales + 1 doble + 1 queen",
-    amenities: ["Aire acondicionado","WiFi","TV","Cocina equipada","Lavarropas","Kit de higiene"],
-    descripcion: "Amplio departamento de 2 dormitorios a pocas cuadras del centro de Salta. Totalmente amoblado y equipado, edificio con pileta en azotea y quincho con asador.",
-    precioDesde: null,
-    hasSync: false,
-    reservaLinks: {}
-  },
-  {
-    id: "depto-2do-1",
-    nombre: "Depto 2do 1",
-    photo: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=900&q=80&auto=format&fit=crop",
-    huespedes: 6,
-    dormitorios: 2,
-    tamano: 80,
-    camas: "2 individuales + 2 dobles",
-    amenities: ["Aire acondicionado","WiFi","TV","Cocina equipada","Ropa blanca","Kit de higiene"],
-    descripcion: "Amplio departamento de 2 dormitorios, cerca del centro y de los polos gastronómicos y culturales de la ciudad. Pileta en azotea según temporada y quincho con asador (previa reserva en conserjería).",
-    precioDesde: null,
-    hasSync: true,
-    reservaLinks: { airbnb: "https://www.airbnb.com.ar/rooms/28866519" }
-  },
-  {
-    id: "depto-boedo",
-    nombre: "Depto 1 en Boedo",
-    photo: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format&fit=crop",
-    huespedes: 3,
-    dormitorios: 1,
-    tamano: null,
-    camas: "2 individuales + 1 doble",
-    amenities: ["WiFi","TV","Baño con ducha"],
-    descripcion: "Hermoso departamento de 1 dormitorio, baño principal, cocina comedor y jardín con vista a la calle. A pocas cuadras de la Plaza central de Salta. Cochera con costo adicional.",
-    precioDesde: null,
-    hasSync: false,
-    reservaLinks: {}
-  },
-  {
-    id: "depto-5",
-    nombre: "Depto 5",
-    photo: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=80&auto=format&fit=crop",
-    huespedes: 6,
-    dormitorios: 2,
-    tamano: 83,
-    camas: "2 individuales + 1 doble",
-    amenities: ["Aire acondicionado","WiFi","TV","Cocina equipada"],
-    descripcion: "Amplio departamento de 2 dormitorios, a pocas cuadras del centro de Salta. Totalmente amoblado y equipado.",
-    precioDesde: null,
-    hasSync: true,
-    reservaLinks: { airbnb: "https://www.airbnb.com.ar/rooms/27422722", booking: "https://www.booking.com/Share-3B17Ius" }
-  }
-];
-
-const WA_NUMBER = "5493875802928";
+/* Los datos de los departamentos (DEPTOS, WA_NUMBER, waLink) viven en
+   depto-data.js, compartido con depto.html (página de detalle). */
 
 function amenityIconsRow(){
   return `<span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>`;
-}
-
-function waLink(depto, checkin, checkout){
-  let msg = `Hola! Quiero consultar disponibilidad para ${depto.nombre}.`;
-  if(checkin && checkout){
-    msg += ` Entrada: ${checkin}, Salida: ${checkout}.`;
-  }
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 }
 
 function renderDeptos(availabilityMap, checkin, checkout){
@@ -539,13 +454,15 @@ function renderDeptos(availabilityMap, checkin, checkout){
       ? `<span class="depto-price">Desde <strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS</strong> / noche</span>`
       : `<span class="depto-price">Consultar precio</span>`;
 
+    const detailUrl = `depto.html?id=${depto.id}`;
+
     card.innerHTML = `
-      <div class="depto-img-wrap">
+      <a href="${detailUrl}" class="depto-img-wrap" style="display:block;">
         <img src="${depto.photo}" alt="${depto.nombre}" loading="lazy">
         ${badge}
-      </div>
+      </a>
       <div class="depto-body">
-        <h3>${depto.nombre}</h3>
+        <h3><a href="${detailUrl}" style="color:inherit;text-decoration:none;">${depto.nombre}</a></h3>
         <div class="depto-meta">
           <span>${depto.huespedes} huéspedes</span>
           <span>${depto.dormitorios} dormitorio${depto.dormitorios>1?'s':''}</span>
@@ -556,6 +473,7 @@ function renderDeptos(availabilityMap, checkin, checkout){
         <div class="depto-amenities">
           ${depto.amenities.map(a => `<span class="amenity-pill">${a}</span>`).join("")}
         </div>
+        <a href="${detailUrl}" style="font-size:12.5px;color:var(--terracota);text-decoration:none;font-weight:600;letter-spacing:0.02em;">Ver galería y detalles &rarr;</a>
         <div class="depto-footer">
           ${priceHtml}
           <div class="depto-actions">

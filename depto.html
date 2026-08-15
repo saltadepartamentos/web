@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salta Departamentos</title>
+<meta name="description" content="Departamento temporario en Salta, Argentina. Fotos, características y reserva directa.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+--terracota:#E9A11B;
+--arena:#E7EDF1;
+--oro:#F2B23A;
+--tierra:#3B5568;
+--noche:#0E2432;
+--crema:#F6F8F9;
+--blanco:#FFFFFF;
+--verde:#2E8B57;
+--rojo:#B5432E;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--crema);color:var(--noche);}
+
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(14,36,50,0.93);backdrop-filter:blur(10px);}
+.nav-inner{max-width:1280px;margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo-wrap{display:flex;align-items:center;gap:11px;line-height:1;text-decoration:none;}
+.logo-icon{width:38px;height:38px;display:block;flex-shrink:0;}
+.logo-text{display:flex;flex-direction:column;gap:3px;}
+.logo-main{font-family:'Playfair Display',serif;color:#fff;font-size:20px;font-weight:600;letter-spacing:0.01em;}
+.logo-sub{font-size:10px;color:var(--oro);letter-spacing:0.2em;text-transform:uppercase;}
+.wa-btn{display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:9px 20px;font-size:13px;font-weight:500;text-decoration:none;letter-spacing:0.04em;transition:background .2s;}
+.wa-btn:hover{background:#1fba59;}
+.wa-btn svg{width:17px;height:17px;fill:#fff;}
+
+.wa-float{position:fixed;bottom:28px;right:28px;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.28);transition:transform .2s,background .2s;}
+.wa-float:hover{transform:scale(1.08);background:#1fba59;}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+
+.page-wrap{max-width:1280px;margin:0 auto;padding:110px 5% 80px;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--tierra);text-decoration:none;letter-spacing:0.03em;margin-bottom:22px;transition:color .2s;}
+.back-link:hover{color:var(--terracota);}
+.back-link svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;}
+
+.depto-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,44px);font-weight:600;color:var(--noche);margin-bottom:10px;}
+.depto-meta-row{display:flex;flex-wrap:wrap;gap:18px;font-size:13.5px;color:var(--tierra);margin-bottom:32px;}
+.depto-meta-row span{display:flex;align-items:center;gap:6px;}
+.depto-meta-row svg{width:16px;height:16px;stroke:var(--terracota);fill:none;stroke-width:1.8;}
+
+/* Galeria */
+.gallery{margin-bottom:48px;}
+.gallery-main{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;cursor:zoom-in;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;display:block;}
+.gallery-count{position:absolute;bottom:14px;right:14px;background:rgba(14,36,50,0.75);color:#fff;font-size:12px;padding:6px 12px;letter-spacing:0.03em;}
+.gallery-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px;margin-top:8px;}
+.gallery-thumbs img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;cursor:pointer;opacity:0.6;transition:opacity .2s,outline .2s;outline:2px solid transparent;}
+.gallery-thumbs img:hover{opacity:0.9;}
+.gallery-thumbs img.active{opacity:1;outline-color:var(--terracota);}
+.gallery-empty{aspect-ratio:16/9;background:var(--arena);display:flex;align-items:center;justify-content:center;color:var(--tierra);font-size:14px;text-align:center;padding:20px;}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(14,36,50,0.96);z-index:999;display:none;align-items:center;justify-content:center;flex-direction:column;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:90vw;max-height:80vh;object-fit:contain;}
+.lightbox-close{position:absolute;top:24px;right:28px;color:#fff;font-size:32px;cursor:pointer;line-height:1;background:none;border:none;}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:none;color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.lightbox-nav:hover{background:rgba(255,255,255,0.25);}
+.lightbox-prev{left:20px;}
+.lightbox-next{right:20px;}
+.lightbox-count{color:rgba(255,255,255,0.6);font-size:13px;margin-top:14px;}
+
+.content-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start;}
+.desc-block{margin-bottom:32px;}
+.desc-block h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:14px;color:var(--noche);}
+.desc-block p{font-size:14.5px;line-height:1.85;color:#555;}
+.amenities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.amenity-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--tierra);background:#fff;padding:11px 14px;box-shadow:0 2px 8px rgba(14,36,50,0.05);}
+.amenity-item svg{width:16px;height:16px;stroke:var(--terracota);fill:none;stroke-width:1.8;flex-shrink:0;}
+
+.booking-card{background:#fff;padding:26px 24px;box-shadow:0 8px 28px rgba(14,36,50,0.08);position:sticky;top:96px;}
+.booking-price{font-size:13px;color:var(--tierra);margin-bottom:4px;}
+.booking-price strong{display:block;font-size:24px;color:var(--noche);font-family:'Playfair Display',serif;margin-top:2px;}
+.booking-actions{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;background:#25D366;color:#fff;padding:13px;font-size:13.5px;font-weight:600;text-decoration:none;letter-spacing:0.03em;transition:background .2s;}
+.btn-wa:hover{background:#1fba59;}
+.btn-wa svg{width:16px;height:16px;fill:#fff;}
+.btn-book{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;border:1px solid var(--arena);color:var(--tierra);transition:border-color .2s,color .2s;}
+.btn-book:hover{border-color:var(--terracota);color:var(--terracota);}
+
+.not-found{text-align:center;padding:100px 20px;}
+.not-found h1{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:14px;}
+.not-found a{color:var(--terracota);}
+
+footer{background:#120d09;padding:40px 5% 24px;margin-top:60px;}
+.foot-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.foot-inner p{font-size:11px;color:rgba(255,255,255,0.3);}
+.foot-inner a{color:rgba(255,255,255,0.5);font-size:12.5px;text-decoration:none;}
+
+@media(max-width:900px){
+.content-grid{grid-template-columns:1fr;}
+.booking-card{position:static;}
+}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/5493875802928" target="_blank" class="wa-float" aria-label="Contactar por WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo-wrap">
+<img src="images/logo-icon.png" alt="" class="logo-icon">
+<div class="logo-text">
+<span class="logo-main">Salta Departamentos</span>
+<span class="logo-sub">Alquiler Temporario</span>
+</div>
+</a>
+<a href="https://wa.me/5493875802928" target="_blank" class="wa-btn">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+WhatsApp
+</a>
+</div>
+</nav>
+
+<div id="app" class="page-wrap"></div>
+
+<div class="lightbox" id="lightbox">
+<button class="lightbox-close" id="lb-close" aria-label="Cerrar">&times;</button>
+<button class="lightbox-nav lightbox-prev" id="lb-prev" aria-label="Anterior">&#8249;</button>
+<img id="lb-img" src="" alt="">
+<button class="lightbox-nav lightbox-next" id="lb-next" aria-label="Siguiente">&#8250;</button>
+<div class="lightbox-count" id="lb-count"></div>
+</div>
+
+<footer>
+<div class="foot-inner">
+<p>© <span id="year"></span> Salta Departamentos. Todos los derechos reservados.</p>
+<a href="index.html">Volver a Departamentos</a>
+</div>
+</footer>
+
+<script src="depto-data.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+const depto = DEPTOS.find(d => d.id === id);
+const app = document.getElementById("app");
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const iconCheck = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`;
+const iconBack = `<svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>`;
+
+if(!depto){
+  app.innerHTML = `
+    <div class="not-found">
+      <h1>No encontramos ese departamento</h1>
+      <p><a href="index.html">&larr; Volver al listado de departamentos</a></p>
+    </div>
+  `;
+} else {
+  document.title = `${depto.nombre} — Salta Departamentos`;
+
+  const photos = (depto.photos && depto.photos.length) ? depto.photos : [{ src: depto.photo, alt: depto.nombre }];
+
+  const galleryHtml = `
+    <div class="gallery">
+      <div class="gallery-main" id="gallery-main">
+        <img id="gallery-main-img" src="${photos[0].src}" alt="${photos[0].alt}">
+        ${photos.length > 1 ? `<div class="gallery-count">1 / ${photos.length}</div>` : ""}
+      </div>
+      ${photos.length > 1 ? `
+        <div class="gallery-thumbs" id="gallery-thumbs">
+          ${photos.map((p, i) => `<img src="${p.src}" alt="${p.alt}" data-i="${i}" class="${i===0?'active':''}">`).join("")}
+        </div>
+      ` : ""}
+    </div>
+  `;
+
+  const priceHtml = depto.precioDesde
+    ? `<div class="booking-price">Desde<strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS / noche</strong></div>`
+    : `<div class="booking-price"><strong style="font-size:17px;">Consultar precio</strong></div>`;
+
+  app.innerHTML = `
+    <a href="index.html#departamentos" class="back-link">${iconBack} Volver a departamentos</a>
+    <h1 class="depto-title">${depto.nombre}</h1>
+    <div class="depto-meta-row">
+      <span>${depto.huespedes} huéspedes</span>
+      <span>${depto.dormitorios} dormitorio${depto.dormitorios>1?'s':''}</span>
+      ${depto.tamano ? `<span>${depto.tamano} m²</span>` : ""}
+      <span>${depto.camas}</span>
+    </div>
+    ${galleryHtml}
+    <div class="content-grid">
+      <div>
+        <div class="desc-block">
+          <h2>Descripción</h2>
+          <p>${depto.descripcionLarga || depto.descripcion}</p>
+        </div>
+        <div class="desc-block">
+          <h2>Comodidades</h2>
+          <div class="amenities-grid">
+            ${depto.amenities.map(a => `<div class="amenity-item">${iconCheck}${a}</div>`).join("")}
+          </div>
+        </div>
+      </div>
+      <div class="booking-card">
+        ${priceHtml}
+        <div class="booking-actions">
+          ${depto.reservaLinks && depto.reservaLinks.airbnb ? `<a class="btn-book" href="${depto.reservaLinks.airbnb}" target="_blank">Reservar en Airbnb</a>` : ""}
+          ${depto.reservaLinks && depto.reservaLinks.booking ? `<a class="btn-book" href="${depto.reservaLinks.booking}" target="_blank">Reservar en Booking</a>` : ""}
+          <a class="btn-wa" href="${waLink(depto)}" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Galeria interactiva
+  let current = 0;
+  const mainImg = document.getElementById("gallery-main-img");
+  const mainWrap = document.getElementById("gallery-main");
+  const countEl = mainWrap.querySelector(".gallery-count");
+  const thumbs = document.querySelectorAll("#gallery-thumbs img");
+
+  function setPhoto(i){
+    current = (i + photos.length) % photos.length;
+    mainImg.src = photos[current].src;
+    mainImg.alt = photos[current].alt;
+    if(countEl) countEl.textContent = `${current+1} / ${photos.length}`;
+    thumbs.forEach(t => t.classList.toggle("active", parseInt(t.dataset.i) === current));
+  }
+  thumbs.forEach(t => t.addEventListener("click", () => setPhoto(parseInt(t.dataset.i))));
+
+  const lightbox = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lb-img");
+  const lbCount = document.getElementById("lb-count");
+
+  function openLightbox(i){
+    setPhoto(i);
+    lbImg.src = photos[current].src;
+    lbImg.alt = photos[current].alt;
+    lbCount.textContent = `${current+1} / ${photos.length}`;
+    lightbox.classList.add("open");
+  }
+  function closeLightbox(){ lightbox.classList.remove("open"); }
+  function lbNav(delta){
+    setPhoto(current + delta);
+    lbImg.src = photos[current].src;
+    lbImg.alt = photos[current].alt;
+    lbCount.textContent = `${current+1} / ${photos.length}`;
+  }
+
+  mainWrap.addEventListener("click", () => openLightbox(current));
+  document.getElementById("lb-close").addEventListener("click", closeLightbox);
+  document.getElementById("lb-prev").addEventListener("click", () => lbNav(-1));
+  document.getElementById("lb-next").addEventListener("click", () => lbNav(1));
+  lightbox.addEventListener("click", (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (e) => {
+    if(!lightbox.classList.contains("open")) return;
+    if(e.key === "Escape") closeLightbox();
+    if(e.key === "ArrowLeft") lbNav(-1);
+    if(e.key === "ArrowRight") lbNav(1);
+  });
+}
+</script>
+</body>
+</html>
