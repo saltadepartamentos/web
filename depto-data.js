@@ -88,8 +88,8 @@ const DEPTOS = [
     descripcion: "Amplio departamento de 2 dormitorios, cerca del centro y de los polos gastronómicos y culturales de la ciudad. Pileta en azotea según temporada y quincho con asador (previa reserva en conserjería).",
     descripcionLarga: "Departamento de 2 dormitorios en piso 2°, cerca del centro y de los polos gastronómicos y culturales de Salta. Living-comedor con TV, cocina totalmente equipada y placard amplio en el dormitorio principal. Incluye ropa de cama y de baño, y kit de higiene. El edificio cuenta con pileta en azotea (según temporada) y quincho con asador, con vista a los cerros de Salta, previa reserva en conserjería.",
     precioDesde: null,
-    hasSync: true,
-    reservaLinks: { airbnb: "https://www.airbnb.com.ar/rooms/28866519" }
+    hasSync: false,
+    reservaLinks: {}
   },
   {
     id: "depto-boedo",

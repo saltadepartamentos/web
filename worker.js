@@ -30,7 +30,7 @@ const DEPTOS = [
   {
     id: "depto-8vo-2",
     icalUrls: [
-      "https://www.airbnb.com.ar/calendar/ical/38852148.ics?s=66caff4375b04c8b799596aac8bc6f1d",
+      "https://www.airbnb.com.ar/calendar/ical/28866519.ics?t=c324b4cff63e41db956df8950e71ad0d",
     ],
   },
   {
@@ -42,7 +42,7 @@ const DEPTOS = [
   {
     id: "depto-2do-1",
     icalUrls: [
-      "https://www.airbnb.com.ar/calendar/ical/28866519.ics?s=9d1cf4dd68a1882513fe7e74e7909157",
+      // Sin calendario por ahora (a pedido de Eduardo, 16/8/2026)
     ],
   },
   {
@@ -54,7 +54,7 @@ const DEPTOS = [
   {
     id: "depto-5",
     icalUrls: [
-      "https://www.airbnb.com.ar/calendar/ical/27422722.ics?s=d1deadfca105ad4acf5ec4558b13deb",
+      "https://www.airbnb.com.ar/calendar/ical/27422722.ics?t=097c7a94cb7840da839a701011a021cf",
     ],
   },
 ];
