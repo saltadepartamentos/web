@@ -166,6 +166,21 @@ footer{background:#120d09;padding:48px 5% 28px;}
 .wa-float:hover{transform:scale(1.08);background:#1fba59;}
 .wa-float svg{width:28px;height:28px;fill:#fff;}
 
+.cf-card{background:rgba(255,255,255,0.05);padding:30px 26px;border-left:3px solid var(--terracota);margin-top:44px;}
+.cf-title{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--oro);margin-bottom:16px;}
+.cf-row{display:grid;gap:14px;margin-bottom:14px;}
+.cf-row.two{grid-template-columns:1fr 1fr;}
+.cf-row.three{grid-template-columns:1fr 1fr 1fr;}
+.cf-field label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:6px;}
+.cf-field input,.cf-field textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);padding:11px 12px;color:#fff;font-size:13.5px;font-family:'Inter',sans-serif;box-sizing:border-box;outline:none;}
+.cf-field input:focus,.cf-field textarea:focus{border-color:var(--terracota);}
+.cf-field textarea{resize:none;}
+.cf-submit{width:100%;background:#25D366;color:#fff;border:none;padding:14px;font-size:13.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;margin-top:6px;transition:background .2s;}
+.cf-submit:hover{background:#1fba59;}
+.cf-note{font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;text-align:center;}
+.cf-error{font-size:12px;color:#ff8a80;margin-top:-6px;margin-bottom:14px;display:none;}
+.cf-error.show{display:block;}
+
 @media(max-width:900px){
 .nav-links{display:none;}
 .map-grid,.cont-grid{grid-template-columns:1fr;}
@@ -358,6 +373,43 @@ Escribinos por WhatsApp
 </div>
 </div>
 </div>
+
+<div class="cf-card">
+<p class="cf-title">Formulario de consulta</p>
+<form id="contact-form">
+<div class="cf-row two">
+<div class="cf-field">
+<label for="cf-nombre">Nombre</label>
+<input type="text" id="cf-nombre" placeholder="Tu nombre" required>
+</div>
+<div class="cf-field">
+<label for="cf-tel">WhatsApp / Teléfono</label>
+<input type="text" id="cf-tel" placeholder="+54 9 387 ..." required>
+</div>
+</div>
+<div class="cf-row three">
+<div class="cf-field">
+<label for="cf-checkin">Entrada</label>
+<input type="date" id="cf-checkin" required>
+</div>
+<div class="cf-field">
+<label for="cf-checkout">Salida</label>
+<input type="date" id="cf-checkout" required>
+</div>
+<div class="cf-field">
+<label for="cf-huespedes">Huéspedes</label>
+<input type="number" id="cf-huespedes" min="1" placeholder="2" required>
+</div>
+</div>
+<div class="cf-field" style="margin-bottom:8px;">
+<label for="cf-mensaje">Mensaje (opcional)</label>
+<textarea id="cf-mensaje" rows="3" placeholder="Contanos qué departamento te interesa..."></textarea>
+</div>
+<p class="cf-error" id="cf-error">Completá todos los campos obligatorios (el mensaje es opcional).</p>
+<button type="submit" class="cf-submit">Enviar consulta por WhatsApp</button>
+<p class="cf-note">Al enviar, se abre WhatsApp con tu mensaje ya redactado.</p>
+</form>
+</div>
 </div>
 </section>
 
@@ -548,6 +600,52 @@ document.getElementById("search-form").addEventListener("submit", function(e){
     document.getElementById("checkout").min = this.value;
   });
 })();
+
+// Formulario de contacto
+(function setContactFormMinDates(){
+  const today = new Date().toISOString().split("T")[0];
+  const cfCheckin = document.getElementById("cf-checkin");
+  const cfCheckout = document.getElementById("cf-checkout");
+  cfCheckin.min = today;
+  cfCheckout.min = today;
+  cfCheckin.addEventListener("change", function(){
+    cfCheckout.min = this.value;
+  });
+})();
+
+function fmtFecha(iso){
+  const [y, m, d] = iso.split("-");
+  return `${d}/${m}/${y}`;
+}
+
+document.getElementById("contact-form").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const nombre = document.getElementById("cf-nombre").value.trim();
+  const tel = document.getElementById("cf-tel").value.trim();
+  const checkin = document.getElementById("cf-checkin").value;
+  const checkout = document.getElementById("cf-checkout").value;
+  const huespedes = document.getElementById("cf-huespedes").value.trim();
+  const mensaje = document.getElementById("cf-mensaje").value.trim();
+  const errorEl = document.getElementById("cf-error");
+
+  if(!nombre || !tel || !checkin || !checkout || !huespedes){
+    errorEl.classList.add("show");
+    return;
+  }
+  errorEl.classList.remove("show");
+
+  let msg = "Hola! Quiero consultar disponibilidad de un departamento.\n\n";
+  msg += `Nombre: ${nombre}\n`;
+  msg += `Entrada: ${fmtFecha(checkin)}\n`;
+  msg += `Salida: ${fmtFecha(checkout)}\n`;
+  msg += `Huéspedes: ${huespedes}\n`;
+  msg += `Contacto: ${tel}`;
+  if(mensaje) msg += `\nMensaje: ${mensaje}`;
+
+  gtag('event', 'conversion', {'send_to': 'AW-18393423487/E5AHCNTs5eIcEP-81cJE'});
+  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+});
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
