@@ -1,9 +1,14 @@
 /**
  * Salta Departamentos — Worker de disponibilidad
  * ------------------------------------------------
- * Lee los calendarios .ics de Airbnb / Booking de cada departamento
- * (el navegador no puede leerlos directo por CORS) y responde si hay
- * superposición con el rango de fechas pedido.
+ * Lee el calendario .ics de Airbnb de cada departamento (el navegador
+ * no puede leerlo directo por CORS) y responde si hay superposición
+ * con el rango de fechas pedido.
+ *
+ * Solo se vincula el calendario de AIRBNB. Booking.com se sincroniza
+ * directo desde Airbnb (Eduardo lo tiene vinculado del lado de
+ * Booking), así que el calendario de Airbnb ya refleja también las
+ * reservas de Booking — no hace falta cargar un .ics de Booking acá.
  *
  * Endpoint:
  *   GET /availability?checkin=YYYY-MM-DD&checkout=YYYY-MM-DD
@@ -14,14 +19,12 @@
  *   false -> ocupado (hay una reserva que se superpone)
  *   null  -> todavía no tiene calendario cargado (consultar manualmente)
  *
- * CÓMO CONSEGUIR EL LINK .ICS DE CADA PLATAFORMA
+ * CÓMO CONSEGUIR EL LINK .ICS DE AIRBNB
  * -----------------------------------------------
- * Airbnb:   Panel de anfitrión > Calendario > Disponibilidad >
- *           Sincronización de calendarios > Exportar calendario
- *           (o ya están cargados en Wix Hotels > Reservas > iCal,
- *           que es de donde se sacaron los 3 links de abajo).
- * Booking:  Extranet > Calendario > Sincronizar calendarios >
- *           Exportar calendario de Booking.com.
+ * Panel de anfitrión > Calendario > Disponibilidad > Sincronización de
+ * calendarios > Exportar calendario (o ya están cargados en Wix
+ * Hotels > Reservas > iCal, que es de donde se sacaron los links de
+ * abajo).
  *
  * Para agregar/cambiar un depto, editar el array DEPTOS más abajo.
  */
@@ -36,7 +39,7 @@ const DEPTOS = [
   {
     id: "depto-8vo-3",
     icalUrls: [
-      // TODO: agregar link de Airbnb y/o Booking de Depto 8vo 3
+      // TODO: agregar link .ics de Airbnb de Depto 8vo 3
     ],
   },
   {
@@ -48,7 +51,7 @@ const DEPTOS = [
   {
     id: "depto-boedo",
     icalUrls: [
-      // TODO: agregar link de Airbnb y/o Booking de Depto 1 en Boedo
+      // TODO: agregar link .ics de Airbnb de Depto 1 en Boedo
     ],
   },
   {
