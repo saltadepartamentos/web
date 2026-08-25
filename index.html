@@ -193,6 +193,21 @@ footer{background:#120d09;padding:48px 5% 28px;}
 .search-box{flex-direction:column;align-items:stretch;}
 .search-btn{width:100%;}
 }
+
+/* — retoques 25/08/2026 — */
+/* La foto estaba en 4/3: en pantalla ancha se comía la tarjeta entera. */
+.depto-img-wrap{aspect-ratio:16/10;max-height:260px;}
+
+/* «Ver galería y detalles» tiene el tamaño metido en el propio tag (12,5px),
+   por eso el !important. Hijo directo, para no agrandar el título del depto. */
+.depto-body > a{
+  font-size:15.5px !important;
+  display:inline-block;
+  padding:4px 0;
+  border-bottom:1.5px solid transparent;
+  transition:border-color .2s;
+}
+.depto-body > a:hover{border-bottom-color:currentColor;}
 </style>
 </head>
 <body>
