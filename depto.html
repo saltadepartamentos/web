@@ -109,6 +109,25 @@ nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(14,36,50,0.93);b
 .btn-book{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.03em;border:1px solid var(--arena);color:var(--tierra);transition:border-color .2s,color .2s;}
 .btn-book:hover{border-color:var(--terracota);color:var(--terracota);}
 
+.bk-form{margin-top:18px;display:flex;flex-direction:column;gap:12px;}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bk-field label{display:block;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--tierra);font-weight:600;margin-bottom:5px;}
+.bk-field input,.bk-field select,.bk-field textarea{width:100%;box-sizing:border-box;border:1px solid var(--arena);
+  background:#fff;padding:10px 11px;font-size:13.5px;font-family:'Inter',sans-serif;color:var(--noche);outline:none;border-radius:4px;}
+.bk-field input:focus,.bk-field select:focus,.bk-field textarea:focus{border-color:var(--terracota);}
+.bk-field textarea{resize:none;height:62px;}
+.bk-detalle{border-top:1px solid var(--arena);border-bottom:1px solid var(--arena);padding:14px 0;margin-top:4px;font-size:13.5px;color:var(--tierra);}
+.bk-linea{display:flex;justify-content:space-between;gap:12px;margin-bottom:7px;}
+.bk-linea:last-child{margin-bottom:0;}
+.bk-total{font-weight:600;color:var(--noche);font-size:16px;padding-top:9px;border-top:1px solid var(--arena);margin-top:9px;}
+.bk-aviso{font-size:13px;padding:11px 12px;border-radius:4px;background:#fdf3e7;color:#8a5a1f;}
+.bk-aviso.mal{background:#fdecea;color:#a3322a;}
+.bk-aviso.bien{background:#eaf6ee;color:#22683c;}
+.bk-enviar{width:100%;background:var(--terracota);color:#fff;border:none;padding:14px;font-size:13.5px;font-weight:600;
+  letter-spacing:0.05em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:opacity .2s;}
+.bk-enviar:hover{opacity:.88;}
+.bk-enviar:disabled{opacity:.5;cursor:default;}
+.bk-nota{font-size:11.5px;color:var(--tierra);line-height:1.6;text-align:center;}
 .not-found{text-align:center;padding:100px 20px;}
 .not-found h1{font-family:'Playfair Display',serif;font-size:28px;margin-bottom:14px;}
 .not-found a{color:var(--terracota);}
@@ -242,9 +261,31 @@ if(!depto){
     </div>
   `;
 
-  const priceHtml = depto.precioDesde
-    ? `<div class="booking-price">Desde<strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS / noche</strong></div>`
-    : `<div class="booking-price"><strong style="font-size:17px;">Consultar precio</strong></div>`;
+  /* Las fechas llegan desde el buscador de la home, si vino de ahi. */
+  const qp = new URLSearchParams(location.search);
+  const API = "https://tarifas-api.deptos-travelsalta.workers.dev";
+  const PRECIO_DESDE = 60000;
+
+  const priceHtml = `
+    <div class="booking-price" id="bk-desde">Desde<strong>$${PRECIO_DESDE.toLocaleString("es-AR")} ARS / noche</strong></div>
+    <form class="bk-form" id="bk-form" novalidate>
+      <div class="bk-row">
+        <div class="bk-field"><label for="bk-in">Entrada</label><input type="date" id="bk-in" required></div>
+        <div class="bk-field"><label for="bk-out">Salida</label><input type="date" id="bk-out" required></div>
+      </div>
+      <div class="bk-field"><label for="bk-per">Huéspedes</label>
+        <select id="bk-per">${Array.from({length: depto.huespedes}, (_, i) =>
+          `<option value="${i+1}"${i+1===2?" selected":""}>${i+1} ${i===0?"huésped":"huéspedes"}</option>`).join("")}</select>
+      </div>
+      <div id="bk-detalle"></div>
+      <div class="bk-field"><label for="bk-nombre">Nombre y apellido</label><input type="text" id="bk-nombre" required></div>
+      <div class="bk-field"><label for="bk-tel">WhatsApp</label><input type="tel" id="bk-tel" placeholder="+54 9 387 ..." required></div>
+      <div class="bk-field"><label for="bk-email">Correo</label><input type="email" id="bk-email" placeholder="para mandarte la confirmación"></div>
+      <div class="bk-field"><label for="bk-msg">Algo que debamos saber</label><textarea id="bk-msg" placeholder="Hora de llegada, cochera, lo que sea"></textarea></div>
+      <div id="bk-error"></div>
+      <button type="submit" class="bk-enviar" id="bk-enviar">Reservar</button>
+      <p class="bk-nota">No se cobra nada acá. Recibimos tu pedido y te escribimos para coordinar el pago.</p>
+    </form>`;
 
   app.innerHTML = `
     <a href="index.html#departamentos" class="back-link">${iconBack} Volver a departamentos</a>
@@ -282,6 +323,120 @@ if(!depto){
       </div>
     </div>
   `;
+
+  /* ---------- Reserva ----------
+     La cotizacion la resuelve el Worker, no el navegador: asi el precio que
+     ve el huesped es el mismo que queda anotado en el panel. */
+  (function(){
+    const $ = id => document.getElementById(id);
+    const fIn = $("bk-in"), fOut = $("bk-out"), fPer = $("bk-per");
+    const caja = $("bk-detalle"), err = $("bk-error"), boton = $("bk-enviar");
+    const hoy = new Date().toISOString().slice(0,10);
+    fIn.min = hoy; fOut.min = hoy;
+
+    if(qp.get("checkin")) fIn.value = qp.get("checkin");
+    if(qp.get("checkout")) fOut.value = qp.get("checkout");
+    if(qp.get("personas")){
+      const n = Math.min(parseInt(qp.get("personas"),10) || 2, depto.huespedes);
+      fPer.value = String(n);
+    }
+
+    const plata = n => "$" + Number(n).toLocaleString("es-AR");
+    const fecha = f => f ? f.split("-").reverse().join("/") : "";
+    let cot = null;
+
+    function aviso(caja, texto, clase){
+      caja.innerHTML = texto ? `<div class="bk-aviso ${clase||""}">${texto}</div>` : "";
+    }
+
+    async function cotizar(){
+      cot = null;
+      if(!fIn.value || !fOut.value){
+        caja.innerHTML = `<div class="bk-detalle" style="color:var(--tierra)">Elegí las fechas y te mostramos el precio exacto.</div>`;
+        return;
+      }
+      if(fOut.value <= fIn.value){ aviso(caja, "La salida tiene que ser posterior a la entrada.", "mal"); return; }
+      caja.innerHTML = `<div class="bk-detalle">Calculando…</div>`;
+      try{
+        const r = await fetch(`${API}/cotizar?depto=${encodeURIComponent(depto.id)}&checkin=${fIn.value}&checkout=${fOut.value}&personas=${fPer.value}`);
+        const c = await r.json();
+        if(!c.ok){ aviso(caja, c.mensaje || "No podemos cotizar esas fechas.", "mal"); return; }
+        cot = c;
+        /* Con fechas elegidas, el "desde" ya no aporta y confunde al lado del
+           precio real de esas noches. */
+        const desde = document.getElementById("bk-desde");
+        if(desde) desde.style.display = "none";
+        caja.innerHTML = `
+          <div class="bk-detalle">
+            <div class="bk-linea"><span>${fecha(c.checkin)} → ${fecha(c.checkout)}</span><span>${c.noches} ${c.noches===1?"noche":"noches"}</span></div>
+            <div class="bk-linea"><span>${plata(c.tarifaPorNoche)} por noche</span><span>${c.personas} ${c.personas===1?"huésped":"huéspedes"}</span></div>
+            <div class="bk-linea bk-total"><span>Total</span><span>${plata(c.total)} ARS</span></div>
+          </div>`;
+      }catch(e){ aviso(caja, "No pudimos calcular el precio. Escribinos por WhatsApp.", "mal"); }
+    }
+
+    [fIn, fOut, fPer].forEach(el => el.addEventListener("change", cotizar));
+    cotizar();
+
+    $("bk-form").addEventListener("submit", async function(e){
+      e.preventDefault();
+      const nombre = $("bk-nombre").value.trim();
+      const tel = $("bk-tel").value.trim();
+      const email = $("bk-email").value.trim();
+      const mensaje = $("bk-msg").value.trim();
+
+      if(!fIn.value || !fOut.value){ aviso(err, "Elegí las fechas de entrada y salida.", "mal"); return; }
+      if(!nombre || !tel){ aviso(err, "Necesitamos tu nombre y un WhatsApp para responderte.", "mal"); return; }
+      if(!cot){ aviso(err, "Todavía no tenemos precio para esas fechas.", "mal"); return; }
+      aviso(err, "");
+
+      /* WhatsApp se abre YA, en el mismo gesto del clic: si se abriera despues
+         de esperar la respuesta del servidor, el navegador lo bloquea por
+         considerarlo una ventana no pedida. */
+      const texto = [
+        "Hola! Quiero reservar por la web.",
+        "",
+        depto.nombre,
+        `Entrada: ${fecha(fIn.value)}`,
+        `Salida: ${fecha(fOut.value)}`,
+        `Noches: ${cot.noches}`,
+        `Huéspedes: ${fPer.value}`,
+        `Total: ${plata(cot.total)} ARS`,
+        "",
+        `Nombre: ${nombre}`,
+        `Contacto: ${tel}`,
+        email ? `Correo: ${email}` : "",
+        mensaje ? `Nota: ${mensaje}` : "",
+        "",
+        "Quedo a la espera para coordinar el pago."
+      ].filter(Boolean).join("\n");
+      const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}`;
+
+      gtag('event', 'conversion', {'send_to': 'AW-18393423487/E5AHCNTs5eIcEP-81cJE'});
+      window.open(waUrl, "_blank");
+
+      boton.disabled = true; boton.textContent = "Enviando…";
+      let guardada = false;
+      try{
+        const r = await fetch(`${API}/solicitud`, {
+          method: "POST", headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ depto: depto.id, entrada: fIn.value, salida: fOut.value,
+            personas: parseInt(fPer.value,10), nombre, email, telefono: tel, mensaje })
+        });
+        const res = await r.json();
+        guardada = r.ok && res.ok;
+      }catch(e){ guardada = false; }
+
+      document.querySelector(".booking-card").innerHTML = `
+        <div class="bk-aviso bien" style="font-size:14px;line-height:1.7">
+          <strong>Recibimos tu pedido.</strong><br>
+          ${depto.nombre} · ${fecha(fIn.value)} al ${fecha(fOut.value)} · ${plata(cot.total)} ARS<br><br>
+          Te abrimos WhatsApp con todo el detalle. Si no se abrió,
+          <a href="https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(texto)}" target="_blank"><strong>tocá acá</strong></a>.
+          ${guardada ? "" : "<br><br>No pudimos registrarlo automáticamente, así que el mensaje de WhatsApp es lo que vale."}
+        </div>`;
+    });
+  })();
 
   // Galeria interactiva
   let current = 0;

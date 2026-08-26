@@ -478,6 +478,7 @@ const WORKER_URL = "https://shiny-term-d478.deptos-travelsalta.workers.dev";
 /* API de tarifas y reservas directas. Devuelve precio y estado ya resueltos
    para los cinco deptos en una sola peticion. */
 const TARIFAS_URL = "https://tarifas-api.deptos-travelsalta.workers.dev";
+let personasBuscadas = 2;
 
 /* Piso publicado del tarifario (baja, dom a jue, estadia de 3 a 6 noches).
    Es lo que se muestra mientras el huesped todavia no eligio fechas. */
@@ -526,7 +527,11 @@ function renderDeptos(estados, checkin, checkout){
     if(est && est.estado !== "disponible") card.style.opacity = "0.72";
 
     const RUTAS_DEPTO = {"depto-8vo-2": "depto8vo2", "depto-8vo-3": "depto8vo3", "depto-2do-1": "depto2do1", "depto-5": "depto5", "depto-boedo": "boedo"};
-    const detailUrl = RUTAS_DEPTO[depto.id] ? `/${RUTAS_DEPTO[depto.id]}/` : `depto.html?id=${depto.id}`;
+    /* Las fechas buscadas viajan a la ficha: el huesped no las vuelve a cargar. */
+    const q = (checkin && checkout) ? `?checkin=${checkin}&checkout=${checkout}&personas=${personasBuscadas||2}` : "";
+    const detailUrl = RUTAS_DEPTO[depto.id]
+      ? `/${RUTAS_DEPTO[depto.id]}/${q}`
+      : `depto.html?id=${depto.id}${q.replace("?", "&")}`;
 
     card.innerHTML = `
       <a href="${detailUrl}" class="depto-img-wrap" style="display:block;">
@@ -570,6 +575,7 @@ async function buscarDisponibilidad(checkin, checkout, personas){
 
   /* Dos fuentes, en paralelo: el calendario de Airbnb dice que esta ocupado,
      y la API de tarifas dice cuanto sale y si hay una reserva directa. */
+  personasBuscadas = personas;
   const pedir = (u) => fetch(u).then(r => r.ok ? r.json() : null).catch(() => null);
   const [airbnb, tarifas] = await Promise.all([
     WORKER_URL ? pedir(`${WORKER_URL}/availability?checkin=${checkin}&checkout=${checkout}`) : Promise.resolve(null),
