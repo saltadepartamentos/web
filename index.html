@@ -525,7 +525,8 @@ function renderDeptos(estados, checkin, checkout){
     card.className = "depto-card";
     if(est && est.estado !== "disponible") card.style.opacity = "0.72";
 
-    const detailUrl = `depto.html?id=${depto.id}`;
+    const RUTAS_DEPTO = {"depto-8vo-2": "depto8vo2", "depto-8vo-3": "depto8vo3", "depto-2do-1": "depto2do1", "depto-5": "depto5", "depto-boedo": "boedo"};
+    const detailUrl = RUTAS_DEPTO[depto.id] ? `/${RUTAS_DEPTO[depto.id]}/` : `depto.html?id=${depto.id}`;
 
     card.innerHTML = `
       <a href="${detailUrl}" class="depto-img-wrap" style="display:block;">

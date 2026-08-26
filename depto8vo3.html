@@ -1,3 +1,6 @@
+---
+permalink: /depto8vo3/
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,9 +17,11 @@
 <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta charset="UTF-8">
+<base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salta Departamentos</title>
+<title>Depto 8vo 3 — Alquiler temporario en Salta</title>
 <meta name="description" content="Departamento temporario en Salta, Argentina. Fotos, características y reserva directa.">
+<link rel="canonical" href="https://saltadepartamentos.com/depto8vo3/">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -163,15 +168,9 @@ WhatsApp
 </div>
 </footer>
 
+<script>const DEPTO_ID = "depto-8vo-3";</script>
 <script src="depto-data.js"></script>
 <script>
-/* Las direcciones viejas siguen andando, pero mandan a la nueva: asi los
-   enlaces que ya circulan no se pierden y Google consolida una sola pagina. */
-(function(){
-  const RUTAS = {"depto-8vo-2": "depto8vo2", "depto-8vo-3": "depto8vo3", "depto-2do-1": "depto2do1", "depto-5": "depto5", "depto-boedo": "boedo"};
-  const q = new URLSearchParams(location.search).get("id");
-  if(typeof DEPTO_ID === "undefined" && q && RUTAS[q]) location.replace("/" + RUTAS[q] + "/");
-})();
 const params = new URLSearchParams(location.search);
 const id = (typeof DEPTO_ID !== "undefined" && DEPTO_ID) || params.get("id");
 const depto = DEPTOS.find(d => d.id === id);
