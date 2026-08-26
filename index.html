@@ -479,6 +479,10 @@ const WORKER_URL = "https://shiny-term-d478.deptos-travelsalta.workers.dev";
    para los cinco deptos en una sola peticion. */
 const TARIFAS_URL = "https://tarifas-api.deptos-travelsalta.workers.dev";
 
+/* Piso publicado del tarifario (baja, dom a jue, estadia de 3 a 6 noches).
+   Es lo que se muestra mientras el huesped todavia no eligio fechas. */
+const PRECIO_DESDE = 60000;
+
 /* Los datos de los departamentos (DEPTOS, WA_NUMBER, waLink) viven en
    depto-data.js, compartido con depto.html (página de detalle). */
 
@@ -503,9 +507,9 @@ function precioDe(est, depto){
     return `<span class="depto-price"><strong>$${noche} ARS</strong> / noche · total $${total} por ${est.noches} noche${est.noches>1?"s":""}</span>`;
   }
   if(est && est.mensaje) return `<span class="depto-price">${est.mensaje}</span>`;
-  return depto.precioDesde
-    ? `<span class="depto-price">Desde <strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS</strong> / noche</span>`
-    : `<span class="depto-price">Consultar precio</span>`;
+  /* Antes de buscar no sabemos fechas ni personas, asi que se muestra el piso
+     real del tarifario: la noche mas barata publicada. Igual para los cinco. */
+  return `<span class="depto-price">Desde <strong>$${PRECIO_DESDE.toLocaleString("es-AR")} ARS</strong> / noche</span>`;
 }
 
 function renderDeptos(estados, checkin, checkout){
