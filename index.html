@@ -475,6 +475,10 @@ Escribinos por WhatsApp
    ============================================================ */
 const WORKER_URL = "https://shiny-term-d478.deptos-travelsalta.workers.dev";
 
+/* API de tarifas y reservas directas. Devuelve precio y estado ya resueltos
+   para los cinco deptos en una sola peticion. */
+const TARIFAS_URL = "https://tarifas-api.deptos-travelsalta.workers.dev";
+
 /* Los datos de los departamentos (DEPTOS, WA_NUMBER, waLink) viven en
    depto-data.js, compartido con depto.html (página de detalle). */
 
@@ -482,55 +486,47 @@ function amenityIconsRow(){
   return `<span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>`;
 }
 
-function renderDeptos(availabilityMap, checkin, checkout){
+function badgeDe(est, depto){
+  if(!est) return "";
+  if(est.estado === "disponible") return `<span class="avail-badge disponible">Disponible</span>`;
+  if(est.estado === "ocupado")    return `<span class="avail-badge ocupado">Ocupado</span>`;
+  if(est.estado === "capacidad")  return `<span class="avail-badge consultar">Hasta ${est.capacidad} huéspedes</span>`;
+  return `<span class="avail-badge consultar">Consultar</span>`;
+}
+
+function precioDe(est, depto){
+  /* El precio se muestra aunque el depto no este disponible: sirve igual para
+     que el huesped compare y escriba. */
+  if(est && est.total){
+    const noche = est.tarifaPorNoche.toLocaleString("es-AR");
+    const total = est.total.toLocaleString("es-AR");
+    return `<span class="depto-price"><strong>$${noche} ARS</strong> / noche · total $${total} por ${est.noches} noche${est.noches>1?"s":""}</span>`;
+  }
+  if(est && est.mensaje) return `<span class="depto-price">${est.mensaje}</span>`;
+  return depto.precioDesde
+    ? `<span class="depto-price">Desde <strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS</strong> / noche</span>`
+    : `<span class="depto-price">Consultar precio</span>`;
+}
+
+function renderDeptos(estados, checkin, checkout){
   const grid = document.getElementById("deptos-grid");
   grid.innerHTML = "";
 
-  // Si hay resultados de búsqueda, mostramos SOLO los confirmados disponibles.
-  // Los ocupados, sin calendario vinculado (null) o con error quedan afuera.
-  let lista = [...DEPTOS];
-  if(availabilityMap){
-    lista = lista.filter(d => availabilityMap[d.id] === true);
-  }
-
-  if(availabilityMap && lista.length === 0){
-    let msg = "Hola! Busqué disponibilidad en la web y no encontré nada libre";
-    if(checkin && checkout) msg += ` entre ${checkin} y ${checkout}`;
-    msg += ". ¿Tienen alguna opción?";
-    const wa = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-    grid.innerHTML = `
-      <div class="no-results">
-        <p>No encontramos departamentos disponibles para esas fechas.</p>
-        <a href="${wa}" target="_blank" onclick="gtag('event', 'conversion', {'send_to': 'AW-18393423487/E5AHCNTs5eIcEP-81cJE'});" class="depto-wa" style="display:inline-flex;margin-top:14px;">
-          Consultar por WhatsApp
-        </a>
-      </div>
-    `;
-    return;
-  }
-
-  lista.forEach(depto => {
+  /* Se muestran siempre los cinco. Un depto sin calendario vinculado no se
+     puede afirmar libre, asi que no se ofrece como disponible, pero esconderlo
+     seria perder la consulta. */
+  DEPTOS.forEach(depto => {
+    const est = estados ? estados[depto.id] : null;
     const card = document.createElement("div");
     card.className = "depto-card";
-
-    let badge = "";
-    if(availabilityMap){
-      const av = availabilityMap[depto.id];
-      if(av === true) badge = `<span class="avail-badge disponible">Disponible</span>`;
-      else if(av === false) badge = `<span class="avail-badge ocupado">Ocupado</span>`;
-      else badge = `<span class="avail-badge consultar">Consultar</span>`;
-    }
-
-    const priceHtml = depto.precioDesde
-      ? `<span class="depto-price">Desde <strong>$${depto.precioDesde.toLocaleString("es-AR")} ARS</strong> / noche</span>`
-      : `<span class="depto-price">Consultar precio</span>`;
+    if(est && est.estado !== "disponible") card.style.opacity = "0.72";
 
     const detailUrl = `depto.html?id=${depto.id}`;
 
     card.innerHTML = `
       <a href="${detailUrl}" class="depto-img-wrap" style="display:block;">
         <img src="${depto.photo}" alt="${depto.nombre}" loading="lazy">
-        ${badge}
+        ${badgeDe(est, depto)}
       </a>
       <div class="depto-body">
         <h3><a href="${detailUrl}" style="color:inherit;text-decoration:none;">${depto.nombre}</a></h3>
@@ -544,9 +540,9 @@ function renderDeptos(availabilityMap, checkin, checkout){
         <div class="depto-amenities">
           ${depto.amenities.map(a => `<span class="amenity-pill">${a}</span>`).join("")}
         </div>
-        <a href="${detailUrl}" style="font-size:12.5px;color:var(--terracota);text-decoration:none;font-weight:600;letter-spacing:0.02em;">Ver galería y detalles &rarr;</a>
+        <a href="${detailUrl}" style="font-size:15.5px;color:var(--terracota);text-decoration:none;font-weight:600;letter-spacing:0.02em;">Ver galería y detalles &rarr;</a>
         <div class="depto-footer">
-          ${priceHtml}
+          ${precioDe(est, depto)}
           <div class="depto-actions">
             ${depto.reservaLinks && depto.reservaLinks.airbnb ? `<a class="depto-book" href="${depto.reservaLinks.airbnb}" target="_blank">Reservar en Airbnb</a>` : ""}
             ${depto.reservaLinks && depto.reservaLinks.booking ? `<a class="depto-book" href="${depto.reservaLinks.booking}" target="_blank">Reservar en Booking</a>` : ""}
@@ -562,30 +558,49 @@ function renderDeptos(availabilityMap, checkin, checkout){
   });
 }
 
-async function buscarDisponibilidad(checkin, checkout){
+async function buscarDisponibilidad(checkin, checkout, personas){
   const msgEl = document.getElementById("search-msg");
   msgEl.className = "search-msg show";
+  msgEl.textContent = "Buscando disponibilidad…";
 
-  if(!WORKER_URL){
-    msgEl.textContent = "La verificación automática todavía no está activada. Mostrando todos los departamentos — consultá disponibilidad exacta por WhatsApp.";
+  /* Dos fuentes, en paralelo: el calendario de Airbnb dice que esta ocupado,
+     y la API de tarifas dice cuanto sale y si hay una reserva directa. */
+  const pedir = (u) => fetch(u).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [airbnb, tarifas] = await Promise.all([
+    WORKER_URL ? pedir(`${WORKER_URL}/availability?checkin=${checkin}&checkout=${checkout}`) : Promise.resolve(null),
+    pedir(`${TARIFAS_URL}/disponibilidad?checkin=${checkin}&checkout=${checkout}&personas=${personas}`)
+  ]);
+
+  if(!tarifas || !tarifas.deptos){
+    msgEl.textContent = "No pudimos calcular las tarifas en este momento. Consultanos por WhatsApp y te respondemos enseguida.";
     renderDeptos(null, checkin, checkout);
     return;
   }
 
-  msgEl.textContent = "Buscando disponibilidad…";
-  try {
-    const res = await fetch(`${WORKER_URL}/availability?checkin=${checkin}&checkout=${checkout}`);
-    if(!res.ok) throw new Error("bad response");
-    const data = await res.json();
-    const map = {};
-    data.results.forEach(r => { map[r.id] = r.available; });
+  const airMap = {};
+  if(airbnb && airbnb.results) airbnb.results.forEach(r => { airMap[r.id] = r.available; });
+
+  const estados = {};
+  tarifas.deptos.forEach(d => {
+    let estado = d.estado;
+    /* Airbnb manda sobre "disponible": si dice que esta ocupado, esta ocupado,
+       y si no sabemos que dice, no lo ofrecemos. Es la regla conservadora —
+       vale mas perder una consulta que vender dos veces la misma noche. */
+    if(estado === "disponible"){
+      if(airMap[d.slug] === false) estado = "ocupado";
+      else if(airMap[d.slug] !== true) estado = "sin-calendario";
+    }
+    estados[d.slug] = Object.assign({}, d, { estado: estado });
+  });
+
+  const libres = Object.values(estados).filter(e => e.estado === "disponible").length;
+  if(libres === 0){
+    msgEl.textContent = "No tenemos confirmación automática para esas fechas. Los precios son los reales — escribinos por WhatsApp y te confirmamos al toque.";
+  } else {
     msgEl.textContent = "";
     msgEl.className = "search-msg";
-    renderDeptos(map, checkin, checkout);
-  } catch(err){
-    msgEl.textContent = "No pudimos verificar la disponibilidad automáticamente. Mostrando todos los departamentos — consultá por WhatsApp para confirmar.";
-    renderDeptos(null, checkin, checkout);
   }
+  renderDeptos(estados, checkin, checkout);
 }
 
 document.getElementById("search-form").addEventListener("submit", function(e){
@@ -599,7 +614,9 @@ document.getElementById("search-form").addEventListener("submit", function(e){
     msgEl.textContent = "La fecha de salida debe ser posterior a la de entrada.";
     return;
   }
-  buscarDisponibilidad(checkin, checkout);
+  const g = document.getElementById("guests").value;
+  const personas = parseInt(g, 10) || 2;
+  buscarDisponibilidad(checkin, checkout, personas);
 });
 
 // Fecha mínima = hoy
