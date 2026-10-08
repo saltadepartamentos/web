@@ -196,8 +196,25 @@
               "items": [
                 "Ingresen el código que les envió el encargado, giren la perilla junto a los números y tiren para abrir.",
                 "Adentro encontrarán la llave del departamento y el sensor (y el control de la cochera, si la solicitaron).",
-                "Cierren la caja y mezclen la combinación.",
-                "Para abrir la puerta del edificio, acerquen el sensor a la caja negra del panel de vidrio, a la izquierda de la puerta principal.",
+                "Cierren la caja y mezclen la combinación."
+              ]
+            },
+            {
+              "t": "ol",
+              "inicio": 4,
+              "items": [
+                "Para abrir la puerta del edificio, acerquen el sensor a la zona marcada en rojo en la foto: la caja negra del panel de vidrio, a la izquierda de la puerta principal, junto al cartel «click»."
+              ]
+            },
+            {
+              "t": "img",
+              "src": "images/mi-estadia/puerta.jpg",
+              "alt": "Puerta principal del edificio; en el panel de vidrio de la izquierda, marcada en rojo, la zona donde se acerca el sensor"
+            },
+            {
+              "t": "ol",
+              "inicio": 5,
+              "items": [
                 "Por favor, cierren la puerta del edificio al entrar y al salir, y verifiquen que haya quedado bien cerrada."
               ]
             },

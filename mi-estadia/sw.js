@@ -1,10 +1,10 @@
 /* Service worker de /mi-estadia/: deja la página y sus fotos disponibles sin conexión.
    La guía (con la clave del Wi-Fi) NO se guarda acá: la página la guarda en el
    almacenamiento del propio dispositivo y se borra si el enlace deja de ser válido. */
-const CACHE = "mi-estadia-v3";
+const CACHE = "mi-estadia-v4";
 const PAGINA = new URL("./", self.location).pathname; // /mi-estadia/
 const BASE = [PAGINA, "../images/logo-icon.png", "../favicon-32.png", "../apple-touch-icon.png",
-  "../images/mi-estadia/cajas.jpg", "../images/mi-estadia/termostato.jpg"];
+  "../images/mi-estadia/cajas.jpg", "../images/mi-estadia/puerta.jpg", "../images/mi-estadia/termostato.jpg"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(BASE.map((u) => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
