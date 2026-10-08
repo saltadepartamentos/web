@@ -196,25 +196,8 @@
               "items": [
                 "Ingresen el código que les envió el encargado, giren la perilla junto a los números y tiren para abrir.",
                 "Adentro encontrarán la llave del departamento y el sensor (y el control de la cochera, si la solicitaron).",
-                "Cierren la caja y mezclen la combinación."
-              ]
-            },
-            {
-              "t": "ol",
-              "inicio": 4,
-              "items": [
-                "Para abrir la puerta del edificio, acerquen el sensor al lector de la pared, a la izquierda de la puerta principal (marcado en la foto)."
-              ]
-            },
-            {
-              "t": "img",
-              "src": "images/mi-estadia/sensor.jpg",
-              "alt": "Lector del edificio, junto a la puerta principal, donde se acerca el sensor (marcado en verde)"
-            },
-            {
-              "t": "ol",
-              "inicio": 5,
-              "items": [
+                "Cierren la caja y mezclen la combinación.",
+                "Para abrir la puerta del edificio, acerquen el sensor a la caja negra del panel de vidrio, a la izquierda de la puerta principal.",
                 "Por favor, cierren la puerta del edificio al entrar y al salir, y verifiquen que haya quedado bien cerrada."
               ]
             },
@@ -234,7 +217,7 @@
             {
               "t": "ul",
               "items": [
-                "Solo al finalizar la estadía (no en cada salida): dejen dentro de la caja de llaves la llave del departamento y el sensor.",
+                "SOLO AL FINALIZAR LA ESTADÍA: dejen dentro de la caja de llaves la llave del departamento y el sensor.",
                 "Si usaron cochera, dejen también el control del portón.",
                 "Cierren la caja y mezclen la combinación.",
                 "Al salir, cierren la puerta del edificio y verifiquen que haya quedado bien cerrada."
@@ -297,7 +280,7 @@
                 "Si viajan con mascota, avisen antes al encargado.",
                 "Horario de silencio: de 23:00 a 8:00. Eviten TV, radio con volumen alto y otros ruidos molestos.",
                 "No se permiten fiestas ni reuniones que alteren el orden, ni juegos de azar prohibidos por la ley.",
-                "Usen solo los artefactos del departamento. Por seguridad no se permiten planchas, secadores de ropa ni otros aparatos que puedan provocar un incendio.",
+                "Usen solo los artefactos del departamento (que incluye plancha). Por seguridad no se permiten secadores de ropa ni otros aparatos que puedan provocar un incendio.",
                 "Los daños, o la pérdida de llaves, sensor, control de cochera, TV o aire acondicionado, se abonan (reparación o reposición)."
               ]
             },
