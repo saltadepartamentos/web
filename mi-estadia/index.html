@@ -118,6 +118,7 @@ details.card summary:focus-visible,.tab:focus-visible,.btn:focus-visible,.tile:f
 .lugares .n{font-weight:600;font-size:16px;}
 .lugares .d{font-size:13.5px;color:var(--tierra);}
 .lugares .x{font-size:15px;margin-top:3px;}
+.lugares img.tour{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin:2px 0 10px;background:var(--arena);}
 .lugares a.mini{display:inline-block;margin-top:6px;font-size:14px;font-weight:500;}
 
 /* Mapa */
@@ -249,7 +250,8 @@ function bloque(b){
     }).join("")+'</ul>';
   case "excursiones":
     return '<ul class="lugares">'+b.items.map(function(it){
-      return '<li><div class="n">'+esc(it.n)+'</div><div class="x">'+esc(it.x)+'</div>'+
+      var im=it.img?'<img class="tour" loading="lazy" decoding="async" alt="'+esc(it.alt||it.n)+'" src="'+(/^https:/.test(it.img)?'':'../')+esc(it.img)+'" onerror="this.remove()">':'';
+      return '<li>'+im+'<div class="n">'+esc(it.n)+'</div><div class="x">'+esc(it.x)+'</div>'+
         '<a class="mini" href="'+esc(it.href)+'" target="_blank" rel="noopener">Ver excursión</a></li>';
     }).join("")+'</ul>';
   case "mapa":
@@ -324,7 +326,7 @@ function mostrar(tab,abrirId){
     var p=G.pestanas.filter(function(x){return x.id===tab;})[0];
     cont.innerHTML=p?pantallaTab(p):pantallaInicio();
   }
-  cont.insertAdjacentHTML("beforeend",'<div class="pie">Salta Departamentos · Valles del Norte Viajes y Turismo</div>');
+  cont.insertAdjacentHTML("beforeend",'<div class="pie">SaltaDepartamentos.com</div>');
   dibujarTabs();
   if(location.hash!=="#"+tab){try{history.replaceState(null,"",location.pathname+"#"+tab);}catch(e){}}
   window.scrollTo(0,0);

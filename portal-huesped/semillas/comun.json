@@ -720,27 +720,37 @@
                 {
                   "n": "City Tour Salta",
                   "x": "Recorrido por los puntos principales de la ciudad.",
-                  "href": "https://www.vallesdelnorte.tur.ar/city-tour-salta"
+                  "href": "https://www.vallesdelnorte.tur.ar/city-tour-salta",
+                  "img": "images/mi-estadia/tour-city-tour.jpg",
+                  "alt": "City Tour Salta"
                 },
                 {
                   "n": "Cafayate y bodegas",
                   "x": "Quebrada de las Conchas y visita a bodegas.",
-                  "href": "https://www.vallesdelnorte.tur.ar/cafayate-bodegas"
+                  "href": "https://www.vallesdelnorte.tur.ar/cafayate-bodegas",
+                  "img": "images/mi-estadia/tour-cafayate.jpg",
+                  "alt": "Cafayate y bodegas"
                 },
                 {
                   "n": "Cachi",
                   "x": "Valles Calchaquíes, pueblos y paisajes de altura.",
-                  "href": "https://www.vallesdelnorte.tur.ar/cachi"
+                  "href": "https://www.vallesdelnorte.tur.ar/cachi",
+                  "img": "https://static.wixstatic.com/media/b4a092_1bf190cab7524e0b9c64b79f51ab1181.jpg/v1/fill/w_720,h_405,al_c,q_80/tour.jpg",
+                  "alt": "Cachi"
                 },
                 {
                   "n": "Quebrada de Humahuaca",
                   "x": "Los pueblos y colores de la quebrada, en Jujuy.",
-                  "href": "https://www.vallesdelnorte.tur.ar/quebrada-humahuaca"
+                  "href": "https://www.vallesdelnorte.tur.ar/quebrada-humahuaca",
+                  "img": "https://static.wixstatic.com/media/b4a092_cd9683ce237d413f8043084d7c743a70~mv2.jpg/v1/fill/w_720,h_405,al_c,q_80/tour.jpg",
+                  "alt": "Quebrada de Humahuaca"
                 },
                 {
                   "n": "Tren a las Nubes",
                   "x": "El tren turístico más famoso de la Argentina.",
-                  "href": "https://www.vallesdelnorte.tur.ar/trenalasnubes"
+                  "href": "https://www.vallesdelnorte.tur.ar/trenalasnubes",
+                  "img": "images/mi-estadia/tour-tren-a-las-nubes.jpg",
+                  "alt": "Tren a las Nubes"
                 }
               ]
             },
