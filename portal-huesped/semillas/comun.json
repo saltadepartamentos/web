@@ -14,14 +14,14 @@
     }
   },
   "inicio": {
-    "saludo": "Bienvenidos a {{titulo}}",
-    "subsaludo": "Pueyrredón 1485 · Salta Capital",
+    "saludo": "Bienvenidos",
+    "subsaludo": "Pueyrredón 1485, Salta Capital",
     "destacados": [
+      "llegada",
       "wifi",
       "calefaccion",
-      "como-llegar",
-      "llegada",
       "salida",
+      "reglas",
       "opinion"
     ],
     "chips": [
@@ -33,7 +33,8 @@
         "t": "Check-out",
         "v": "hasta las 10:00"
       }
-    ]
+    ],
+    "principal": "como-llegar"
   },
   "pestanas": [
     {
@@ -171,7 +172,8 @@
             }
           ]
         }
-      ]
+      ],
+      "subtitulo": "Wi-Fi, calefacción, cochera y todo lo que hay dentro del departamento."
     },
     {
       "id": "edificio",
@@ -316,23 +318,86 @@
           "id": "reglas",
           "titulo": "Reglas de la casa",
           "icono": "list",
-          "resumen": "Convivencia y cuidado",
+          "resumen": "Reglamento interno completo",
           "bloques": [
+            {
+              "t": "p",
+              "x": "Lo esencial, para tener presente durante la estadía:"
+            },
             {
               "t": "ul",
               "items": [
-                "Respeten la cantidad de personas registrada. Si se suma alguien, avisen antes al encargado.",
-                "Está prohibido fumar en todo el edificio.",
-                "Si viajan con mascota, avisen antes al encargado.",
-                "Horario de silencio: de 23:00 a 8:00. Eviten TV, radio con volumen alto y otros ruidos molestos.",
-                "No se permiten fiestas ni reuniones que alteren el orden, ni juegos de azar prohibidos por la ley.",
-                "Usen solo los artefactos del departamento (que incluye plancha). Por seguridad no se permiten secadores de ropa ni otros aparatos que puedan provocar un incendio.",
-                "Los daños, o la pérdida de llaves, sensor, control de cochera, TV o aire acondicionado, se abonan (reparación o reposición)."
+                "Silencio de 23:00 a 8:00.",
+                "Prohibido fumar en todo el edificio.",
+                "Mascotas: avisar antes al encargado.",
+                "Solo las personas registradas pueden alojarse; si se suma alguien, avisen antes.",
+                "Usen solo los artefactos del departamento (incluye la plancha).",
+                "Las llaves de gas no se tocan, salvo emergencia."
               ]
             },
             {
-              "t": "nota",
-              "x": "Salta Departamentos no se responsabiliza por objetos de valor dejados en el departamento ni en áreas comunes."
+              "t": "h",
+              "x": "Reglamento interno"
+            },
+            {
+              "t": "h",
+              "x": "I. Normas generales"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "El presente reglamento interno establece normas generales para una estadía confortable, regulando la relación con los huéspedes, formas, horarios y modo de uso de las instalaciones. Es de aplicación sin perjuicio de las normas generales al respecto.",
+                "Todas las personas que se hospeden en Salta Departamentos, durante su estadía, aceptan de conformidad este Reglamento Interno, el que se considera un contrato de servicios de alojamiento. Caso contrario, Salta Departamentos se reserva el derecho de admisión y permanencia. Las infracciones al mismo dan derecho al establecimiento a tomar las medidas necesarias para que prevalezca el interés general, consagrándose por tanto el derecho de expulsión establecido en el Código Civil."
+              ]
+            },
+            {
+              "t": "h",
+              "x": "II. Ingreso y tarifas"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "El horario de ingreso (check-in) está previsto a partir de las 15:00. Si el departamento ya está listo, pueden ingresar antes; el early check-in, desde las 4:00, tiene media tarifa y está sujeto a disponibilidad.",
+                "El horario de egreso (check-out) es a las 10:00.",
+                "Al ingreso, el huésped deberá completar el formulario de registro de pasajeros y abonar el importe correspondiente al alojamiento, o también chequear que en la aplicación esté confirmado el pago online.",
+                "El huésped deberá respetar la capacidad del departamento contratado y no podrá alojar a personas diferentes de las registradas. En todo caso, dará aviso previo al encargado de cualquier variación en el número o la identificación de las personas que originalmente se registraron y abonará los importes correspondientes.",
+                "El late check-out es a partir de las 10:00. Se cobra media tarifa de alojamiento y da derecho a permanecer en el departamento hasta las 18:00. Está sujeto a disponibilidad. Pasado este lapso, Salta Departamentos se reserva el derecho de desalojar el departamento de acuerdo a la necesidad del día en cuestión. Luego de las 18:00 el monto asciende al 100% de la tarifa diaria.",
+                "Se realizará un inventario de la unidad previo al ingreso, siendo obligación del huésped abonar todo faltante que se constate a su egreso."
+              ]
+            },
+            {
+              "t": "h",
+              "x": "III. Obligaciones del huésped"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "No está permitido el ingreso de mascotas sin aviso previo al encargado.",
+                "No está permitido fumar en ningún sector del establecimiento, de acuerdo con la reglamentación vigente.",
+                "Los huéspedes serán responsables de todo daño causado a las cosas o personas durante su estadía. En caso de dañar o ensuciar el edificio o el mobiliario, así como la pérdida de las llaves, el sensor o el control remoto del portón de acceso a la cochera, del TV o de los aires acondicionados, el huésped deberá abonar el costo de las reparaciones y/o reposiciones por el daño ocasionado.",
+                "El horario de silencio es de 23:00 a 8:00. Dentro de ese horario están prohibidos radios y televisores con altos volúmenes, y otros ruidos molestos que impidan el descanso y la tranquilidad de otros huéspedes.",
+                "No está permitido utilizar los departamentos para juegos de azar prohibidos por la ley, ni celebrar reuniones que tengan por objeto alterar el orden público o desobedecer las leyes o reglamentos vigentes.",
+                "No se podrá utilizar la corriente eléctrica y los artefactos eléctricos en los departamentos para otros fines que no sean aquellos para los que están destinados. Las medidas de seguridad del departamento prohíben estrictamente el uso de secadores de ropa y de otros aparatos eléctricos o de otro tipo que puedan provocar un incendio, excepto los propios del departamento, como la plancha."
+              ]
+            },
+            {
+              "t": "h",
+              "x": "IV. Servicios"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "Limpieza. En estadías de 5 noches o más, la limpieza general y el cambio de sábanas y toallas no tienen costo y se hacen a pedido. En estadías de menos de 5 noches, la limpieza general con cambio de sábanas y toallas cuesta USD 20 (o su equivalente en pesos argentinos). El horario se acuerda entre las partes.",
+                "Toallas. El recambio solo de toallas y toallones se hace a pedido y, en estadías cortas, cuesta USD 7 (hoy, unos $10.000). Ayúdennos a cuidar el medio ambiente. No está permitido retirar toallas o toallones del departamento.",
+                "Respecto de los valores, los mismos deberán ser declarados en el formulario de ingreso. Salta Departamentos no se hace responsable por objetos y/o valores dejados en su unidad y/o áreas públicas.",
+                "Cuando un huésped haga uso del estacionamiento del departamento, debe colocar su automóvil en un lugar adecuado. El establecimiento no se hace responsable de daños parciales o robo total del vehículo ni de objetos dejados en su interior.",
+                "Toda queja, sugerencia o felicitación pueden hacerla llegar directamente al encargado del departamento, por WhatsApp o desde la sección «Su opinión» de esta guía."
+              ]
+            },
+            {
+              "t": "wa",
+              "x": "Escribir al encargado",
+              "msg": "Hola, soy huésped de {{nombre}}."
             }
           ]
         },
@@ -413,7 +478,8 @@
             }
           ]
         }
-      ]
+      ],
+      "subtitulo": "Cómo llegar, ingresar, salir y las reglas de la casa."
     },
     {
       "id": "salta",
@@ -690,7 +756,8 @@
             }
           ]
         }
-      ]
+      ],
+      "subtitulo": "Qué hay cerca del edificio y qué hacer en Salta."
     },
     {
       "id": "ayuda",
@@ -766,7 +833,8 @@
             }
           ]
         }
-      ]
+      ],
+      "subtitulo": "Hablen con el encargado o cuéntennos cómo les fue."
     }
   ]
 }

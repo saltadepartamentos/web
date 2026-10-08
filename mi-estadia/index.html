@@ -19,7 +19,7 @@
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;background:var(--crema);color:var(--noche);
-  padding-bottom:calc(76px + env(safe-area-inset-bottom));min-height:100vh;}
+  padding-bottom:calc(92px + env(safe-area-inset-bottom));min-height:100vh;}
 h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;}
 a{color:var(--tierra);}
 button{font:inherit;color:inherit;cursor:pointer;}
@@ -29,7 +29,10 @@ button{font:inherit;color:inherit;cursor:pointer;}
 .top-in{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:11px;}
 .top img{width:36px;height:36px;display:block;}
 .top .t1{font-family:'Playfair Display',serif;color:#fff;font-size:19px;font-weight:600;line-height:1.1;}
-.top .t2{font-size:10px;color:var(--oro);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;}
+.top .t2{font-size:12px;color:var(--oro);margin-top:2px;}
+.top .quien{flex:1;min-width:0;}
+.help{flex:none;display:none;align-items:center;gap:7px;min-height:44px;padding:0 14px;border-radius:999px;background:#25D366;color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;}
+.help.on{display:inline-flex;} .help svg{width:19px;height:19px;stroke:#fff;}
 
 main{max-width:720px;margin:0 auto;padding:18px 16px 8px;}
 .banner{display:none;max-width:720px;margin:10px auto 0;padding:10px 14px;background:#FFF6DF;border:1px solid #F0D58A;border-radius:10px;font-size:14px;margin-left:16px;margin-right:16px;}
@@ -37,20 +40,36 @@ main{max-width:720px;margin:0 auto;padding:18px 16px 8px;}
 .banner.on{display:block;}
 
 /* Inicio */
-.hero{background:var(--noche);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--sombra);}
-.hero h1{font-size:clamp(25px,7vw,32px);line-height:1.15;}
-.hero p{color:#C9D6DE;font-size:14.5px;margin-top:6px;}
+.hero{background:var(--noche);color:#fff;border-radius:20px;padding:20px 18px 18px;box-shadow:var(--sombra);}
+.hero-top{display:flex;align-items:center;gap:14px;}
+.placa{flex:none;min-width:68px;height:68px;padding:0 10px;border-radius:12px;background:var(--oro);color:var(--noche);display:grid;place-items:center;
+  font-family:'Playfair Display',serif;font-weight:600;font-size:23px;line-height:1;text-align:center;box-shadow:inset 0 0 0 3px var(--noche),inset 0 0 0 4.5px rgba(14,36,50,.45);}
+.hero h1{font-size:clamp(26px,7.4vw,32px);line-height:1.1;}
+.hero p{color:#C9D6DE;font-size:15px;margin-top:4px;}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
-.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 13px;font-size:13.5px;}
-.chip b{color:var(--oro);font-weight:600;margin-right:4px;}
-.sec-t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tierra);margin:26px 2px 10px;font-weight:600;}
+.chip{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:8px 12px;font-size:14px;}
+.chip svg{width:17px;height:17px;stroke:var(--oro);}
+.chip b{font-weight:600;margin-right:2px;}
+.sec-t{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--noche);margin:28px 2px 12px;}
+.cta{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:16px;box-shadow:var(--sombra);margin-top:14px;}
+.cta h2{font-size:20px;line-height:1.2;}
+.cta p{font-size:15px;color:var(--tierra);margin-top:3px;}
+.cta .fila{display:flex;gap:10px;margin-top:14px;}
+.cta .fila .btn{flex:1;padding:0 10px;font-size:15px;}
+.btn.oro{background:var(--oro);color:var(--noche);} .btn.oro svg{stroke:var(--noche);}
+.btn.borde{background:#fff;color:var(--noche);box-shadow:inset 0 0 0 2px var(--noche);} .btn.borde svg{stroke:var(--noche);}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.tile{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:14px 12px;text-align:left;min-height:84px;
-  display:flex;flex-direction:column;justify-content:space-between;gap:8px;box-shadow:var(--sombra);}
+.tile{background:var(--blanco);border:1px solid var(--borde);border-radius:16px;padding:14px 13px;text-align:left;min-height:104px;
+  display:flex;flex-direction:column;justify-content:flex-start;gap:9px;box-shadow:var(--sombra);}
 .tile:active{transform:scale(.98);}
-.tile .ic{width:34px;height:34px;border-radius:10px;background:#FDF1D6;display:grid;place-items:center;}
-.tile .ic svg{width:19px;height:19px;stroke:#A66A00;}
-.tile span{font-weight:600;font-size:15px;}
+.tile .ic{width:38px;height:38px;border-radius:11px;background:var(--noche);display:grid;place-items:center;}
+.tile .ic svg{width:21px;height:21px;stroke:var(--oro);}
+.tile b{display:block;font-weight:600;font-size:16px;line-height:1.2;}
+.tile small{display:block;font-size:13px;color:var(--tierra);line-height:1.3;margin-top:2px;}
+.hablar{margin-top:14px;}
+.tab-h{padding:4px 2px 14px;}
+.tab-h h2{font-size:27px;line-height:1.15;}
+.tab-h p{color:var(--tierra);font-size:15px;margin-top:4px;}
 
 /* Tarjetas */
 .cards{display:flex;flex-direction:column;gap:10px;}
@@ -58,24 +77,27 @@ details.card{background:var(--blanco);border:1px solid var(--borde);border-radiu
 details.card summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 14px;cursor:pointer;min-height:64px;}
 details.card summary::-webkit-details-marker{display:none;}
 .ic{flex:none;}
-.card .ic{width:40px;height:40px;border-radius:12px;background:#FDF1D6;display:grid;place-items:center;}
-.card .ic svg{width:22px;height:22px;stroke:#A66A00;}
+.card .ic{width:42px;height:42px;border-radius:12px;background:var(--noche);display:grid;place-items:center;}
+.card .ic svg{width:22px;height:22px;stroke:var(--oro);}
 .card .tt{flex:1;min-width:0;}
 .card .tt b{display:block;font-size:16.5px;font-weight:600;}
 .card .tt small{display:block;font-size:13.5px;color:var(--tierra);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .card .chev{flex:none;width:20px;height:20px;stroke:var(--tierra);transition:transform .2s;}
 details[open].card .chev{transform:rotate(180deg);}
+details[open].card{border-color:var(--oro);box-shadow:0 0 0 1px var(--oro),var(--sombra);}
+details.card summary:focus-visible,.tab:focus-visible,.btn:focus-visible,.tile:focus-visible,.help:focus-visible{outline:3px solid var(--oro);outline-offset:2px;}
 .card-body{padding:2px 16px 18px;border-top:1px solid var(--arena);}
 .card-body>*+*{margin-top:12px;}
 .card-body>*:first-child{margin-top:14px;}
 .card-body p{font-size:15.5px;}
 .card-body ol,.card-body ul{padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;}
 .card-body ol li::marker{color:#A66A00;font-weight:600;}
+.card-body h4{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-top:20px!important;padding-top:14px;border-top:1px solid var(--arena);}
 .card-body img.foto{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--borde);}
 .nota{background:#FFF6DF;border-left:4px solid var(--oro);border-radius:8px;padding:10px 13px;font-size:15px;}
 .kv{display:flex;flex-direction:column;gap:8px;}
 .kv .row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--crema);border:1px solid var(--borde);border-radius:12px;padding:10px 12px;}
-.kv .k{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tierra);}
+.kv .k{font-size:13px;color:var(--tierra);}
 .kv .v{font-size:19px;font-weight:600;word-break:break-all;font-variant-ligatures:none;}
 .kv .v.mono{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;}
 .copiar{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--noche);color:#fff;border:0;border-radius:10px;padding:0 12px;min-height:44px;font-size:14px;font-weight:500;}
@@ -107,14 +129,14 @@ details[open].card .chev{transform:rotate(180deg);}
 .leyenda li{font-size:14.5px;}
 
 /* Pestañas inferiores */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--borde);
-  padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -4px 16px rgba(14,36,50,.06);}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--noche);border-top:3px solid var(--oro);
+  padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -6px 20px rgba(14,36,50,.25);}
 .tabs-in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
-.tab{background:none;border:0;padding:8px 2px 7px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--tierra);font-size:11.5px;font-weight:500;min-height:60px;}
-.tab svg{width:23px;height:23px;stroke:currentColor;}
-.tab.on{color:var(--noche);font-weight:600;}
-.tab.on svg{stroke:#A66A00;}
-.tab.on::after{content:"";display:block;width:22px;height:3px;border-radius:2px;background:var(--oro);margin-top:1px;}
+.tab{background:none;border:0;padding:9px 2px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;color:#A9BCC9;font-size:12px;font-weight:500;min-height:66px;position:relative;}
+.tab svg{width:25px;height:25px;stroke:currentColor;}
+.tab.on{color:#fff;font-weight:600;background:rgba(255,255,255,.07);}
+.tab.on svg{stroke:var(--oro);}
+.tab.on::before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;border-radius:0 0 3px 3px;background:var(--oro);}
 
 svg.i{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .ayuda-final{margin-top:22px;}
@@ -131,7 +153,8 @@ svg.i{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 <body>
 <header class="top"><div class="top-in">
   <img src="../images/logo-icon.png" alt="">
-  <div><div class="t1">Salta Departamentos</div><div class="t2">Portal del huésped</div></div>
+  <div class="quien"><div class="t1">Salta Departamentos</div><div class="t2">Portal del huésped</div></div>
+  <a class="help" id="help" href="#" target="_blank" rel="noopener" aria-label="Pedir ayuda al encargado por WhatsApp"></a>
 </div></header>
 <div id="banner" class="banner" role="status"></div>
 <main id="app"><div class="cargando">Cargando su guía…</div></main>
@@ -160,7 +183,7 @@ var ICONOS = {
  building:"M4 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 7h3M8 11h3M8 15h3",
  pin:"M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
  help:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01",
- start:"M3 11l9-8 9 8M5 10v11h14V10",
+ start:"M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",
  wifi:"M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01",
  flame:"M12 22c4 0 7-2.7 7-6.8 0-3-1.8-5-3.5-7C14.5 7 14 5 14 3c-3 2-6 5.5-6 9-1-.5-1.7-1.5-2-2.5C4.7 11 5 13 5 15.2 5 19.3 8 22 12 22z",
  snow:"M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5M9 3.5l3 2 3-2M9 20.5l3-2 3 2",
@@ -201,6 +224,7 @@ function bloque(b){
   var c=G.contacto||{};
   switch(b.t){
   case "p": return '<p>'+esc(b.x)+'</p>';
+  case "h": return '<h4>'+esc(b.x)+'</h4>';
   case "ol": return '<ol'+(b.inicio?' start="'+(b.inicio|0)+'"':'')+'>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
   case "ul": return '<ul>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
   case "nota": return '<div class="nota">'+esc(b.x)+'</div>';
@@ -256,22 +280,32 @@ function buscarTarjeta(id){
 }
 
 /* ---------- Pantallas ---------- */
+function primerEnlace(t){
+  for(var i=0;i<t.bloques.length;i++){if(t.bloques[i].t==="link")return t.bloques[i].href;}
+  return "";
+}
 function pantallaInicio(){
-  var ini=G.inicio||{};
-  var h='<section class="hero"><h1>'+esc(ini.saludo||"Bienvenidos")+'</h1><p>'+esc(ini.subsaludo||"")+'</p><div class="chips">'+
-    (ini.chips||[]).map(function(c){return '<span class="chip"><b>'+esc(c.t)+'</b>'+esc(c.v)+'</span>';}).join("")+'</div></section>';
-  var wf=buscarTarjeta("wifi");
-  if(wf){h+='<div class="sec-t">Wi-Fi</div><div class="cards">'+tarjeta(wf.t,true)+'</div>';}
-  h+='<div class="sec-t">Lo más consultado</div><div class="tiles">';
+  var ini=G.inicio||{}, d=G.depto||{}, c=G.contacto||{};
+  var h='<section class="hero"><div class="hero-top">'+(d.titulo?'<div class="placa" aria-label="Departamento '+esc(d.titulo)+'">'+esc(d.titulo)+'</div>':'')+
+    '<div><h1>'+esc(ini.saludo||"Bienvenidos")+'</h1><p>'+esc(ini.subsaludo||"")+'</p></div></div><div class="chips">'+
+    (ini.chips||[]).map(function(x){return '<span class="chip">'+ico("clock")+'<span><b>'+esc(x.t)+'</b> '+esc(x.v)+'</span></span>';}).join("")+'</div></section>';
+  var pr=ini.principal&&buscarTarjeta(ini.principal);
+  if(pr){
+    var href=primerEnlace(pr.t), ing=buscarTarjeta("llegada");
+    h+='<section class="cta"><h2>¿Cómo llegar?</h2><p>Toquen el botón y Google Maps los lleva hasta la puerta del edificio.</p><div class="fila">'+
+      (href?'<a class="btn oro" href="'+esc(href)+'" target="_blank" rel="noopener">'+ico("pin")+'Abrir el mapa</a>':'')+
+      (ing?'<button class="btn borde" data-ir="llegada">'+ico("key")+'Cómo ingresar</button>':'')+'</div></section>';
+  }
+  h+='<h2 class="sec-t">Lo que van a necesitar</h2><div class="tiles">';
   (ini.destacados||[]).forEach(function(id){
-    if(id==="wifi")return; var f=buscarTarjeta(id); if(!f)return;
-    h+='<button class="tile" data-ir="'+esc(id)+'"><span class="ic">'+ico(f.t.icono)+'</span><span>'+esc(f.t.titulo)+'</span></button>';
+    var f=buscarTarjeta(id); if(!f)return;
+    h+='<button class="tile" data-ir="'+esc(id)+'"><span class="ic">'+ico(f.t.icono)+'</span><span><b>'+esc(f.t.titulo)+'</b>'+(f.t.resumen?'<small>'+esc(f.t.resumen)+'</small>':'')+'</span></button>';
   });
-  h+='<button class="tile" data-tab="ayuda"><span class="ic">'+ico("chat")+'</span><span>Hablar con el encargado</span></button></div>';
+  h+='</div><a class="btn wa hablar" href="'+waLink((c.encargado||{}).wa||WA_RESPALDO,"Hola, soy huésped de "+(d.nombre||"Salta Departamentos")+".")+'" target="_blank" rel="noopener">'+ico("chat")+'Hablar con el encargado</a>';
   return h;
 }
 function pantallaTab(p){
-  return '<div class="cards">'+p.tarjetas.map(function(t){return tarjeta(t,false);}).join("")+'</div>';
+  return '<div class="tab-h"><h2>'+esc(p.titulo)+'</h2>'+(p.subtitulo?'<p>'+esc(p.subtitulo)+'</p>':'')+'</div><div class="cards">'+p.tarjetas.map(function(t){return tarjeta(t,false);}).join("")+'</div>';
 }
 
 function dibujarTabs(){
@@ -330,13 +364,17 @@ function iniciarMapaSiHay(scope){
 function aviso(txt){var b=$("#banner");if(txt){b.textContent=txt;b.classList.add("on");}else{b.classList.remove("on");}}
 
 function pantallaSinAcceso(msg){
-  $("#tabs").hidden=true;
+  $("#tabs").hidden=true; var hb=$("#help"); if(hb)hb.classList.remove("on");
   $("#app").innerHTML='<div class="centro"><h1>No pudimos abrir su guía</h1><p>'+esc(msg)+'</p>'+
     '<a class="btn wa" href="'+waLink(WA_RESPALDO,"Hola, no puedo abrir la guía del huésped.")+'" target="_blank" rel="noopener">'+ico("chat")+'Escribir al encargado</a></div>';
 }
 
+function botonAyuda(){
+  var a=$("#help"); if(!a||!G)return; var c=G.contacto||{}, d=G.depto||{};
+  a.innerHTML=ico("chat")+"Ayuda"; a.href=waLink((c.encargado||{}).wa||WA_RESPALDO,"Hola, soy huésped de "+(d.nombre||"Salta Departamentos")+" y necesito ayuda."); a.classList.add("on");
+}
 function usarGuia(g,desdeCache){
-  G=g;
+  G=g; botonAyuda();
   document.title=(g.depto&&g.depto.titulo?g.depto.titulo+" · ":"")+"Mi estadía · Salta Departamentos";
   var h=(location.hash||"").replace("#","");
   var valido=h==="inicio"||g.pestanas.some(function(p){return p.id===h;});
