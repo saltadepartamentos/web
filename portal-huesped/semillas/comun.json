@@ -245,6 +245,13 @@
               ]
             },
             {
+              "t": "ol",
+              "inicio": 6,
+              "items": [
+                "Suban al piso {{piso}}: su departamento es el {{titulo}}."
+              ]
+            },
+            {
               "t": "wa",
               "x": "¿Algún problema para ingresar?",
               "msg": "Hola, soy huésped de {{nombre}} y tengo un problema para ingresar."
