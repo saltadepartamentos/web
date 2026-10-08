@@ -19,8 +19,10 @@
     "destacados": [
       "wifi",
       "calefaccion",
+      "como-llegar",
       "llegada",
-      "salida"
+      "salida",
+      "opinion"
     ],
     "chips": [
       {
@@ -177,6 +179,28 @@
       "icono": "building",
       "tarjetas": [
         {
+          "id": "como-llegar",
+          "titulo": "Cómo llegar",
+          "icono": "pin",
+          "resumen": "Pueyrredón 1485 en Google Maps",
+          "bloques": [
+            {
+              "t": "p",
+              "x": "Pueyrredón 1485, Salta Capital. Toquen el botón y Google Maps los guía hasta la puerta del edificio."
+            },
+            {
+              "t": "link",
+              "x": "Cómo llegar en Google Maps",
+              "href": "https://www.google.com/maps/dir/?api=1&destination=-24.7719644%2C-65.4052554&destination_place_id=ChIJiazaHMLDG5QR-zxUw_qSxnw"
+            },
+            {
+              "t": "link",
+              "x": "Ver la ubicación en Google Maps",
+              "href": "https://maps.app.goo.gl/EpctwGCmXxbUyXb86"
+            }
+          ]
+        },
+        {
           "id": "llegada",
           "titulo": "Llegada",
           "icono": "key",
@@ -243,6 +267,11 @@
             {
               "t": "p",
               "x": "El check-out es hasta las 10:00."
+            },
+            {
+              "t": "link",
+              "x": "Dejar un comentario sobre su estadía",
+              "href": "https://search.google.com/local/writereview?placeid=ChIJiazaHMLDG5QR-zxUw_qSxnw"
             }
           ]
         },
@@ -407,11 +436,10 @@
               "puntos": [
                 {
                   "n": "Edificio · Pueyrredón 1485",
-                  "lat": -24.77172,
-                  "lng": -65.40508,
+                  "lat": -24.7719644,
+                  "lng": -65.4052554,
                   "tipo": "casa",
-                  "aprox": true,
-                  "nota": "Ubicación aproximada"
+                  "nota": "Pueyrredón 1485"
                 },
                 {
                   "n": "Farmacia",
@@ -709,6 +737,32 @@
               "t": "link",
               "x": "Cómo llegar a la Clínica Tres Cerritos",
               "href": "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Tres+Cerritos+Salta"
+            }
+          ]
+        },
+        {
+          "id": "opinion",
+          "titulo": "Su opinión",
+          "icono": "heart",
+          "resumen": "Un comentario al finalizar la estadía",
+          "bloques": [
+            {
+              "t": "p",
+              "x": "Esperamos que disfruten su estadía. Al finalizarla, nos ayuda mucho que dejen un comentario."
+            },
+            {
+              "t": "link",
+              "x": "Dejar un comentario en Google",
+              "href": "https://search.google.com/local/writereview?placeid=ChIJiazaHMLDG5QR-zxUw_qSxnw"
+            },
+            {
+              "t": "p",
+              "x": "Si reservaron por Airbnb o Booking, también pueden dejar su reseña allí."
+            },
+            {
+              "t": "wa",
+              "x": "Contarle al encargado cómo les fue",
+              "msg": "Hola, soy huésped de {{nombre}} y quisiera contarles cómo fue mi estadía."
             }
           ]
         }
