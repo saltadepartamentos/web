@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E2432">
+<title>Mi estadía · Salta Departamentos</title>
+<meta name="description" content="Guía del huésped de Salta Departamentos.">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{
+  --terracota:#E9A11B; --arena:#E7EDF1; --oro:#F2B23A; --tierra:#3B5568;
+  --noche:#0E2432; --crema:#F6F8F9; --blanco:#FFFFFF; --verde:#2E8B57; --rojo:#B5432E;
+  --borde:#DCE4E9; --sombra:0 1px 2px rgba(14,36,50,.06),0 4px 14px rgba(14,36,50,.05);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.5;background:var(--crema);color:var(--noche);
+  padding-bottom:calc(76px + env(safe-area-inset-bottom));min-height:100vh;}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;}
+a{color:var(--tierra);}
+button{font:inherit;color:inherit;cursor:pointer;}
+
+/* Cabecera */
+.top{position:sticky;top:0;z-index:50;background:rgba(14,36,50,.97);backdrop-filter:blur(8px);}
+.top-in{max-width:720px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:11px;}
+.top img{width:36px;height:36px;display:block;}
+.top .t1{font-family:'Playfair Display',serif;color:#fff;font-size:19px;font-weight:600;line-height:1.1;}
+.top .t2{font-size:10px;color:var(--oro);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;}
+
+main{max-width:720px;margin:0 auto;padding:18px 16px 8px;}
+.banner{display:none;max-width:720px;margin:10px auto 0;padding:10px 14px;background:#FFF6DF;border:1px solid #F0D58A;border-radius:10px;font-size:14px;margin-left:16px;margin-right:16px;}
+@media(min-width:752px){.banner{margin-left:auto;margin-right:auto;}}
+.banner.on{display:block;}
+
+/* Inicio */
+.hero{background:var(--noche);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--sombra);}
+.hero h1{font-size:clamp(25px,7vw,32px);line-height:1.15;}
+.hero p{color:#C9D6DE;font-size:14.5px;margin-top:6px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 13px;font-size:13.5px;}
+.chip b{color:var(--oro);font-weight:600;margin-right:4px;}
+.sec-t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--tierra);margin:26px 2px 10px;font-weight:600;}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.tile{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:14px 12px;text-align:left;min-height:84px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:8px;box-shadow:var(--sombra);}
+.tile:active{transform:scale(.98);}
+.tile .ic{width:34px;height:34px;border-radius:10px;background:#FDF1D6;display:grid;place-items:center;}
+.tile .ic svg{width:19px;height:19px;stroke:#A66A00;}
+.tile span{font-weight:600;font-size:15px;}
+
+/* Tarjetas */
+.cards{display:flex;flex-direction:column;gap:10px;}
+details.card{background:var(--blanco);border:1px solid var(--borde);border-radius:14px;box-shadow:var(--sombra);overflow:hidden;scroll-margin-top:76px;}
+details.card summary{list-style:none;display:flex;align-items:center;gap:12px;padding:14px 14px;cursor:pointer;min-height:64px;}
+details.card summary::-webkit-details-marker{display:none;}
+.ic{flex:none;}
+.card .ic{width:40px;height:40px;border-radius:12px;background:#FDF1D6;display:grid;place-items:center;}
+.card .ic svg{width:22px;height:22px;stroke:#A66A00;}
+.card .tt{flex:1;min-width:0;}
+.card .tt b{display:block;font-size:16.5px;font-weight:600;}
+.card .tt small{display:block;font-size:13.5px;color:var(--tierra);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.card .chev{flex:none;width:20px;height:20px;stroke:var(--tierra);transition:transform .2s;}
+details[open].card .chev{transform:rotate(180deg);}
+.card-body{padding:2px 16px 18px;border-top:1px solid var(--arena);}
+.card-body>*+*{margin-top:12px;}
+.card-body>*:first-child{margin-top:14px;}
+.card-body p{font-size:15.5px;}
+.card-body ol,.card-body ul{padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:15.5px;}
+.card-body ol li::marker{color:#A66A00;font-weight:600;}
+.card-body img.foto{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--borde);}
+.nota{background:#FFF6DF;border-left:4px solid var(--oro);border-radius:8px;padding:10px 13px;font-size:15px;}
+.kv{display:flex;flex-direction:column;gap:8px;}
+.kv .row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--crema);border:1px solid var(--borde);border-radius:12px;padding:10px 12px;}
+.kv .k{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tierra);}
+.kv .v{font-size:19px;font-weight:600;word-break:break-all;font-variant-ligatures:none;}
+.kv .v.mono{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;}
+.copiar{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--noche);color:#fff;border:0;border-radius:10px;padding:0 12px;min-height:44px;font-size:14px;font-weight:500;}
+.copiar svg{width:16px;height:16px;stroke:#fff;}
+.copiar.ok{background:var(--verde);}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 18px;border-radius:12px;text-decoration:none;font-weight:600;font-size:15.5px;border:0;}
+.btn svg{width:20px;height:20px;}
+.btn.wa{background:#25D366;color:#fff;} .btn.wa svg{stroke:#fff;}
+.btn.sec{background:var(--noche);color:#fff;} .btn.sec svg{stroke:#fff;}
+.btn.lnk{background:var(--arena);color:var(--noche);} .btn.lnk svg{stroke:var(--noche);}
+.estado{display:inline-block;font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;}
+.estado.si{background:#E3F4EA;color:#1E6B41;} .estado.no{background:#FBE9E5;color:#8F2E1C;}
+
+/* Listas de lugares */
+.lugares{list-style:none;padding:0!important;display:flex;flex-direction:column;gap:0!important;}
+.lugares li{padding:12px 0;border-top:1px solid var(--arena);}
+.lugares li:first-child{border-top:0;padding-top:2px;}
+.lugares .n{font-weight:600;font-size:16px;}
+.lugares .d{font-size:13.5px;color:var(--tierra);}
+.lugares .x{font-size:15px;margin-top:3px;}
+.lugares a.mini{display:inline-block;margin-top:6px;font-size:14px;font-weight:500;}
+
+/* Mapa */
+#mapa{height:320px;border-radius:12px;border:1px solid var(--borde);background:var(--arena);overflow:hidden;z-index:1;}
+.pin{width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);}
+.pin.casa{background:var(--noche);} .pin.farmacia{background:#2E8B57;} .pin.tienda{background:#E9A11B;}
+.pin.lavanderia{background:#3B7EA1;} .pin.salud{background:#B5432E;} .pin.compras{background:#7A5BA6;}
+.pin.aprox{border-style:dashed;}
+.leyenda li{font-size:14.5px;}
+
+/* Pestañas inferiores */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--borde);
+  padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -4px 16px rgba(14,36,50,.06);}
+.tabs-in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+.tab{background:none;border:0;padding:8px 2px 7px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--tierra);font-size:11.5px;font-weight:500;min-height:60px;}
+.tab svg{width:23px;height:23px;stroke:currentColor;}
+.tab.on{color:var(--noche);font-weight:600;}
+.tab.on svg{stroke:#A66A00;}
+.tab.on::after{content:"";display:block;width:22px;height:3px;border-radius:2px;background:var(--oro);margin-top:1px;}
+
+svg.i{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.ayuda-final{margin-top:22px;}
+.pie{max-width:720px;margin:26px auto 0;padding:0 16px 8px;text-align:center;font-size:12.5px;color:var(--tierra);}
+
+/* Estados */
+.centro{max-width:460px;margin:12vh auto 0;text-align:center;padding:0 22px;}
+.centro h1{font-size:26px;margin-bottom:10px;}
+.centro p{color:var(--tierra);margin-bottom:18px;}
+.cargando{text-align:center;color:var(--tierra);padding:60px 0;}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <img src="../images/logo-icon.png" alt="">
+  <div><div class="t1">Salta Departamentos</div><div class="t2">Portal del huésped</div></div>
+</div></header>
+<div id="banner" class="banner" role="status"></div>
+<main id="app"><div class="cargando">Cargando su guía…</div></main>
+<nav class="tabs" id="tabs" aria-label="Secciones" hidden><div class="tabs-in" id="tabs-in"></div></nav>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------- Configuración ---------- */
+var API = "https://portal-huesped.deptos-travelsalta.workers.dev";
+var LEAFLET_CSS = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+var LEAFLET_JS  = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
+var WA_RESPALDO = "5493875802928";
+var LS_ACCESO = "mi_estadia_acceso", LS_GUIA = "mi_estadia_guia_v1";
+
+/* ---------- Utilidades ---------- */
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function lsDel(k){try{localStorage.removeItem(k);}catch(e){}}
+function $(s,r){return (r||document).querySelector(s);}
+
+var ICONOS = {
+ home:"M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z",
+ building:"M4 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17M15 9h4a1 1 0 0 1 1 1v11M3 21h18M8 7h3M8 11h3M8 15h3",
+ pin:"M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z",
+ help:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01",
+ start:"M3 11l9-8 9 8M5 10v11h14V10",
+ wifi:"M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01",
+ flame:"M12 22c4 0 7-2.7 7-6.8 0-3-1.8-5-3.5-7C14.5 7 14 5 14 3c-3 2-6 5.5-6 9-1-.5-1.7-1.5-2-2.5C4.7 11 5 13 5 15.2 5 19.3 8 22 12 22z",
+ snow:"M12 2v20M4.9 6.5l14.2 11M19.1 6.5L4.9 17.5M9 3.5l3 2 3-2M9 20.5l3-2 3 2",
+ car:"M5 17H3v-5l2-5h14l2 5v5h-2M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0M9 17h6M3 12h18",
+ alert:"M12 3l10 18H2zM12 10v5M12 18h.01",
+ sparkle:"M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z",
+ key:"M15 7a4 4 0 1 1-3.5 5.9L4 20.5V18H2v-2h3l5.6-5.6A4 4 0 0 1 15 7zM16 8h.01",
+ door:"M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17M3 21h18M14 12h.01",
+ clock:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 6v6l4 2",
+ list:"M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01",
+ pool:"M2 18c2 0 2 1.5 4 1.5S8 18 10 18s2 1.5 4 1.5S16 18 18 18s2 1.5 4 1.5M2 13c2 0 2 1.5 4 1.5S8 13 10 13s2 1.5 4 1.5S16 13 18 13s2 1.5 4 1.5M8 12V5a2 2 0 0 1 4 0M14 12V5a2 2 0 0 1 4 0M8 8h6",
+ grill:"M4 11h16a8 8 0 0 1-16 0zM8 19l-1 3M16 19l1 3M9 8c0-1.5 1-1.5 1-3M14 8c0-1.5 1-1.5 1-3",
+ trash:"M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3",
+ wash:"M5 3h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM12 18a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM7 6h.01M10 6h.01",
+ music:"M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0z",
+ food:"M7 3v8a2 2 0 0 0 2 2v8M7 3v6M11 3v6a2 2 0 0 1-2 2M17 21V3c-2.5 1-4 4-4 8h4",
+ mountain:"M3 20l6-11 4 6 3-4 5 9zM8 6h.01",
+ chat:"M21 12a8 8 0 0 1-11.8 7L4 20l1.2-4.4A8 8 0 1 1 21 12z",
+ heart:"M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z",
+ copy:"M9 9h10v10H9zM5 15V5h10",
+ chev:"M6 9l6 6 6-6",
+ phone:"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z",
+ ext:"M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
+};
+function ico(n,cls){return '<svg class="i '+(cls||"")+'" viewBox="0 0 24 24" aria-hidden="true"><path d="'+(ICONOS[n]||ICONOS.list)+'"/></svg>';}
+function waLink(num,msg){return "https://wa.me/"+num+(msg?"?text="+encodeURIComponent(msg):"");}
+function mapsBusca(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);}
+
+/* ---------- Estado ---------- */
+var G = null;            // guía actual
+var tabActual = "inicio";
+var mapaIniciado = false;
+
+/* ---------- Render de bloques ---------- */
+function mesEnTemporada(desde,hasta,m){return desde<=hasta ? (m>=desde&&m<=hasta) : (m>=desde||m<=hasta);}
+
+function bloque(b){
+  var c=G.contacto||{};
+  switch(b.t){
+  case "p": return '<p>'+esc(b.x)+'</p>';
+  case "ol": return '<ol>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
+  case "ul": return '<ul>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
+  case "nota": return '<div class="nota">'+esc(b.x)+'</div>';
+  case "img": return '<img class="foto" loading="lazy" src="../'+esc(b.src)+'" alt="'+esc(b.alt||"")+'">';
+  case "kv":
+    return '<div class="kv">'+b.filas.map(function(f,i){
+      var cop=(b.copiar||[]).indexOf(i)>-1;
+      return '<div class="row"><div><div class="k">'+esc(f[0])+'</div><div class="v'+(cop?' mono':'')+'">'+esc(f[1])+'</div></div>'+
+        (cop?'<button class="copiar" data-copiar="'+esc(f[1])+'" aria-label="Copiar '+esc(f[0])+'">'+ico("copy")+'Copiar</button>':'')+'</div>';
+    }).join("")+'</div>';
+  case "wa": return '<a class="btn wa" href="'+waLink((c.encargado||{}).wa||WA_RESPALDO,b.msg)+'" target="_blank" rel="noopener">'+ico("chat")+esc(b.x)+'</a>';
+  case "wa_valles": return '<a class="btn wa" href="'+waLink((c.valles||{}).wa,b.msg)+'" target="_blank" rel="noopener">'+ico("chat")+esc(b.x)+'</a>';
+  case "tel": return '<a class="btn sec" href="tel:+54'+esc(((c.encargado||{}).fijo||"").replace(/^0/,""))+'">'+ico("phone")+esc(b.x)+' · '+esc((c.encargado||{}).fijo_texto||"")+'</a>';
+  case "link": return '<a class="btn lnk" href="'+esc(b.href)+'" target="_blank" rel="noopener">'+ico("ext")+esc(b.x)+'</a>';
+  case "temporada":
+    var abierta=mesEnTemporada(b.desde,b.hasta,new Date().getMonth()+1);
+    return '<div><span class="estado '+(abierta?'si':'no')+'">'+esc(abierta?b.abierta:b.cerrada)+'</span></div>';
+  case "lista":
+    return '<ul class="lugares">'+b.items.map(function(it){
+      return '<li><div class="n">'+esc(it.n)+'</div><div class="d">'+esc(it.dir)+'</div><div class="x">'+esc(it.nota)+'</div>'+
+        '<a class="mini" href="'+mapsBusca(it.n+" "+it.dir+", Salta")+'" target="_blank" rel="noopener">Ver en el mapa</a></li>';
+    }).join("")+'</ul>';
+  case "excursiones":
+    return '<ul class="lugares">'+b.items.map(function(it){
+      return '<li><div class="n">'+esc(it.n)+'</div><div class="x">'+esc(it.x)+'</div>'+
+        '<a class="mini" href="'+esc(it.href)+'" target="_blank" rel="noopener">Ver excursión</a></li>';
+    }).join("")+'</ul>';
+  case "mapa":
+    var leyenda='<ul class="leyenda lugares">'+b.puntos.map(function(p){
+      var href=mapsBusca(p.lat+","+p.lng);
+      return '<li><div class="n">'+esc(p.n)+(p.aprox?' <span class="d">(aprox.)</span>':'')+'</div><div class="d">'+esc(p.nota||"")+'</div>'+
+        '<a class="mini" href="'+href+'" target="_blank" rel="noopener">Abrir en Google Maps</a></li>';
+    }).join("")+'</ul>';
+    return '<div id="mapa" data-mapa=\''+esc(JSON.stringify({centro:b.centro,zoom:b.zoom,puntos:b.puntos}))+'\' role="img" aria-label="Mapa de lugares cercanos"></div>'+leyenda;
+  }
+  return "";
+}
+
+function tarjeta(t,abierta){
+  return '<details class="card" id="c-'+esc(t.id)+'"'+(abierta?' open':'')+'><summary><span class="ic">'+ico(t.icono)+'</span>'+
+    '<span class="tt"><b>'+esc(t.titulo)+'</b>'+(t.resumen?'<small>'+esc(t.resumen)+'</small>':'')+'</span>'+
+    '<svg class="i chev" viewBox="0 0 24 24" aria-hidden="true"><path d="'+ICONOS.chev+'"/></svg></summary>'+
+    '<div class="card-body">'+t.bloques.map(bloque).join("")+'</div></details>';
+}
+
+function buscarTarjeta(id){
+  for(var i=0;i<G.pestanas.length;i++){
+    for(var j=0;j<G.pestanas[i].tarjetas.length;j++){
+      if(G.pestanas[i].tarjetas[j].id===id) return {tab:G.pestanas[i].id,t:G.pestanas[i].tarjetas[j]};
+    }
+  }
+  return null;
+}
+
+/* ---------- Pantallas ---------- */
+function pantallaInicio(){
+  var ini=G.inicio||{};
+  var h='<section class="hero"><h1>'+esc(ini.saludo||"Bienvenidos")+'</h1><p>'+esc(ini.subsaludo||"")+'</p><div class="chips">'+
+    (ini.chips||[]).map(function(c){return '<span class="chip"><b>'+esc(c.t)+'</b>'+esc(c.v)+'</span>';}).join("")+'</div></section>';
+  var wf=buscarTarjeta("wifi");
+  if(wf){h+='<div class="sec-t">Wi-Fi</div><div class="cards">'+tarjeta(wf.t,true)+'</div>';}
+  h+='<div class="sec-t">Lo más consultado</div><div class="tiles">';
+  (ini.destacados||[]).forEach(function(id){
+    if(id==="wifi")return; var f=buscarTarjeta(id); if(!f)return;
+    h+='<button class="tile" data-ir="'+esc(id)+'"><span class="ic">'+ico(f.t.icono)+'</span><span>'+esc(f.t.titulo)+'</span></button>';
+  });
+  h+='<button class="tile" data-tab="ayuda"><span class="ic">'+ico("chat")+'</span><span>Hablar con el encargado</span></button></div>';
+  return h;
+}
+function pantallaTab(p){
+  return '<div class="cards">'+p.tarjetas.map(function(t){return tarjeta(t,false);}).join("")+'</div>';
+}
+
+function dibujarTabs(){
+  var items=[{id:"inicio",titulo:"Inicio",icono:"start"}].concat(G.pestanas.map(function(p){return {id:p.id,titulo:p.titulo,icono:p.icono};}));
+  $("#tabs-in").innerHTML=items.map(function(t){
+    return '<button class="tab'+(t.id===tabActual?' on':'')+'" data-tab="'+esc(t.id)+'" aria-label="'+esc(t.titulo)+'">'+ico(t.icono)+'<span>'+esc(t.titulo)+'</span></button>';
+  }).join("");
+  $("#tabs").hidden=false;
+}
+
+function mostrar(tab,abrirId){
+  tabActual=tab; mapaIniciado=false;
+  var cont=$("#app");
+  if(tab==="inicio"){cont.innerHTML=pantallaInicio();}
+  else{
+    var p=G.pestanas.filter(function(x){return x.id===tab;})[0];
+    cont.innerHTML=p?pantallaTab(p):pantallaInicio();
+  }
+  cont.insertAdjacentHTML("beforeend",'<div class="pie">Salta Departamentos · Valles del Norte Viajes y Turismo</div>');
+  dibujarTabs();
+  if(location.hash!=="#"+tab){try{history.replaceState(null,"",location.pathname+"#"+tab);}catch(e){}}
+  window.scrollTo(0,0);
+  if(abrirId){
+    var d=document.getElementById("c-"+abrirId);
+    if(d){d.open=true; setTimeout(function(){d.scrollIntoView({behavior:"smooth",block:"start"});},50); iniciarMapaSiHay(d);}
+  }
+}
+
+/* ---------- Mapa (Leaflet, se carga solo si se abre la tarjeta) ---------- */
+function cargarLeaflet(cb){
+  if(window.L){cb();return;}
+  var l=document.createElement("link");l.rel="stylesheet";l.href=LEAFLET_CSS;document.head.appendChild(l);
+  var s=document.createElement("script");s.src=LEAFLET_JS;s.onload=cb;
+  s.onerror=function(){var m=$("#mapa");if(m){m.style.height="auto";m.innerHTML='<p style="padding:14px;font-size:14.5px">No se pudo cargar el mapa (¿sin conexión?). Pueden usar la lista de abajo con los enlaces a Google Maps.</p>';}};
+  document.head.appendChild(s);
+}
+function iniciarMapaSiHay(scope){
+  var el=$("#mapa",scope||document); if(!el||mapaIniciado)return;
+  mapaIniciado=true;
+  var cfg=JSON.parse(el.getAttribute("data-mapa"));
+  cargarLeaflet(function(){
+    var m=L.map(el,{scrollWheelZoom:false}).setView(cfg.centro,cfg.zoom);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"© OpenStreetMap"}).addTo(m);
+    var pts=[];
+    cfg.puntos.forEach(function(p){
+      var ic=L.divIcon({className:"",html:'<div class="pin '+p.tipo+(p.aprox?' aprox':'')+'"></div>',iconSize:[22,22],iconAnchor:[11,22],popupAnchor:[0,-20]});
+      L.marker([p.lat,p.lng],{icon:ic}).addTo(m).bindPopup("<b>"+esc(p.n)+"</b><br>"+esc(p.nota||"")+(p.aprox?"<br><i>Ubicación aproximada</i>":""));
+      pts.push([p.lat,p.lng]);
+    });
+    m.fitBounds(pts,{padding:[26,26],maxZoom:16});
+    setTimeout(function(){m.invalidateSize();},200);
+  });
+}
+
+/* ---------- Carga de la guía ---------- */
+function aviso(txt){var b=$("#banner");if(txt){b.textContent=txt;b.classList.add("on");}else{b.classList.remove("on");}}
+
+function pantallaSinAcceso(msg){
+  $("#tabs").hidden=true;
+  $("#app").innerHTML='<div class="centro"><h1>No pudimos abrir su guía</h1><p>'+esc(msg)+'</p>'+
+    '<a class="btn wa" href="'+waLink(WA_RESPALDO,"Hola, no puedo abrir la guía del huésped.")+'" target="_blank" rel="noopener">'+ico("chat")+'Escribir al encargado</a></div>';
+}
+
+function usarGuia(g,desdeCache){
+  G=g;
+  document.title=(g.depto&&g.depto.titulo?g.depto.titulo+" · ":"")+"Mi estadía · Salta Departamentos";
+  var h=(location.hash||"").replace("#","");
+  var valido=h==="inicio"||g.pestanas.some(function(p){return p.id===h;});
+  mostrar(valido?h:"inicio");
+  aviso(desdeCache?"Sin conexión: se muestra la última versión guardada de su guía.":"");
+}
+
+function leerAcceso(){
+  var q=new URLSearchParams(location.search), d=q.get("d"), k=q.get("k");
+  if(d&&k){
+    lsSet(LS_ACCESO,JSON.stringify({d:d,k:k}));
+    try{history.replaceState(null,"",location.pathname+location.hash);}catch(e){}
+    return {d:d,k:k};
+  }
+  try{return JSON.parse(lsGet(LS_ACCESO)||"null");}catch(e){return null;}
+}
+
+function iniciar(){
+  var acc=leerAcceso();
+  var cache=null; try{cache=JSON.parse(lsGet(LS_GUIA)||"null");}catch(e){}
+  if(!acc){
+    if(cache&&cache.guia){usarGuia(cache.guia,true);aviso("");return;}
+    pantallaSinAcceso("Escaneen el código QR que está en el departamento, o pídanle el enlace al encargado."); return;
+  }
+  if(cache&&cache.guia&&cache.d===acc.d){usarGuia(cache.guia,false);}
+  var url=API+"/api/guia?d="+encodeURIComponent(acc.d)+"&k="+encodeURIComponent(acc.k);
+  fetch(url,{cache:"no-store"}).then(function(r){
+    if(r.status===404){lsDel(LS_GUIA);lsDel(LS_ACCESO);G=null;pantallaSinAcceso("Este enlace ya no es válido o está incompleto. Escaneen nuevamente el QR del departamento o pídanle el enlace al encargado.");return null;}
+    if(!r.ok)throw new Error("http "+r.status);
+    return r.json();
+  }).then(function(g){
+    if(!g)return;
+    lsSet(LS_GUIA,JSON.stringify({d:acc.d,guia:g,t:Date.now()}));
+    var estabaEn=tabActual, abiertas=[].slice.call(document.querySelectorAll("details.card[open]")).map(function(x){return x.id;});
+    var primera=!G; G=g; if(primera){usarGuia(g,false);}
+    else{ /* refresco silencioso con el contenido nuevo */
+      mostrar(estabaEn); abiertas.forEach(function(id){var d=document.getElementById(id);if(d)d.open=true;});
+      aviso("");
+    }
+  }).catch(function(){
+    if(G){aviso("Sin conexión: se muestra la última versión guardada de su guía.");}
+    else if(cache&&cache.guia){usarGuia(cache.guia,true);}
+    else pantallaSinAcceso("No hay conexión a internet y todavía no hay una copia guardada. Vuelvan a intentarlo con conexión.");
+  });
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener("click",function(e){
+  var t=e.target.closest("[data-tab]"); if(t&&G){mostrar(t.getAttribute("data-tab"));return;}
+  var ir=e.target.closest("[data-ir]"); if(ir&&G){var f=buscarTarjeta(ir.getAttribute("data-ir"));if(f)mostrar(f.tab,f.t.id);return;}
+  var c=e.target.closest("[data-copiar]");
+  if(c){
+    var txt=c.getAttribute("data-copiar");
+    var listo=function(){c.classList.add("ok");var o=c.innerHTML;c.innerHTML=ico("copy")+"Copiado";setTimeout(function(){c.classList.remove("ok");c.innerHTML=o;},1800);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(listo,function(){fallback(txt,listo);});}
+    else fallback(txt,listo);
+  }
+});
+function fallback(txt,ok){var a=document.createElement("textarea");a.value=txt;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}
+document.addEventListener("toggle",function(e){if(e.target.matches&&e.target.matches("details.card")&&e.target.open)iniciarMapaSiHay(e.target);},true);
+
+/* ---------- Service worker (para que abra sin conexión) ---------- */
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js",{scope:"./"}).catch(function(){});});}
+
+iniciar();
+})();
+</script>
+</body>
+</html>
