@@ -1,16 +1,36 @@
 {
   "version": 1,
   "contacto": {
-    "encargado": { "wa": "5493875802928", "fijo": "03874236615", "fijo_texto": "0387 423-6615", "wa_texto": "387 580-2928" },
-    "valles": { "wa": "543875802988", "web": "https://www.vallesdelnorte.tur.ar", "wa_texto": "387 580-2988" }
+    "encargado": {
+      "wa": "5493875802928",
+      "fijo": "03874236615",
+      "fijo_texto": "0387 423-6615",
+      "wa_texto": "387 580-2928"
+    },
+    "valles": {
+      "wa": "543875802988",
+      "web": "https://www.vallesdelnorte.tur.ar",
+      "wa_texto": "387 580-2988"
+    }
   },
   "inicio": {
     "saludo": "Bienvenidos a {{titulo}}",
     "subsaludo": "Pueyrredón 1485 · Salta Capital",
-    "destacados": ["wifi", "calefaccion", "llegada", "salida"],
+    "destacados": [
+      "wifi",
+      "calefaccion",
+      "llegada",
+      "salida"
+    ],
     "chips": [
-      { "t": "Check-in", "v": "desde las 15:00" },
-      { "t": "Check-out", "v": "hasta las 10:00" }
+      {
+        "t": "Check-in",
+        "v": "desde las 15:00"
+      },
+      {
+        "t": "Check-out",
+        "v": "hasta las 10:00"
+      }
     ]
   },
   "pestanas": [
@@ -25,7 +45,23 @@
           "icono": "wifi",
           "resumen": "Red y clave",
           "bloques": [
-            { "t": "kv", "filas": [["Red", "{{wifi.red}}"], ["Clave", "{{wifi.clave}}"]], "copiar": [0, 1] }
+            {
+              "t": "kv",
+              "filas": [
+                [
+                  "Red",
+                  "{{wifi.red}}"
+                ],
+                [
+                  "Clave",
+                  "{{wifi.clave}}"
+                ]
+              ],
+              "copiar": [
+                0,
+                1
+              ]
+            }
           ]
         },
         {
@@ -34,14 +70,24 @@
           "icono": "flame",
           "resumen": "Termostato del living",
           "bloques": [
-            { "t": "p", "x": "En la pared del living está el termostato PEISA. La pantalla muestra la temperatura actual del ambiente." },
-            { "t": "img", "src": "images/mi-estadia/termostato.jpg", "alt": "Termostato PEISA en la pared del living" },
-            { "t": "ol", "items": [
-              "Para encender los radiadores y la caldera, suban el deslizador de la izquierda hasta el ícono de la llama.",
-              "Con las teclas blancas (flecha arriba y abajo) ajusten la temperatura que desean. El número parpadea hasta que queda fijado.",
-              "Les recomendamos 23 °C.",
-              "Para apagar, bajen el deslizador hasta el ícono de encendido/apagado."
-            ] }
+            {
+              "t": "p",
+              "x": "En la pared del living está el termostato PEISA. La pantalla muestra la temperatura actual del ambiente."
+            },
+            {
+              "t": "img",
+              "src": "images/mi-estadia/termostato.jpg",
+              "alt": "Termostato PEISA en la pared del living"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "Para encender los radiadores y la caldera, suban el deslizador de la izquierda hasta el ícono de la llama.",
+                "Con las teclas blancas (flecha arriba y abajo) ajusten la temperatura que desean. El número parpadea hasta que queda fijado.",
+                "Les recomendamos 23 °C.",
+                "Para apagar, bajen el deslizador hasta el ícono de encendido/apagado."
+              ]
+            }
           ]
         },
         {
@@ -50,7 +96,10 @@
           "icono": "snow",
           "resumen": "Controles remotos",
           "bloques": [
-            { "t": "p", "x": "Cada ambiente con aire se maneja con su control remoto. Los controles están en la mesa del living y en la mesa de luz de uno de los dormitorios." }
+            {
+              "t": "p",
+              "x": "Cada ambiente con aire se maneja con su control remoto. Los controles están en la mesa del living y en la mesa de luz de uno de los dormitorios."
+            }
           ]
         },
         {
@@ -59,14 +108,23 @@
           "icono": "car",
           "resumen": "Si la solicitaron: cochera {{cochera.letra}}",
           "bloques": [
-            { "t": "p", "x": "Si solicitaron cochera, les corresponde la cochera {{cochera.letra}}. Usen únicamente la asignada: el edificio aplica multas altas por usar otra." },
-            { "t": "ul", "items": [
-              "El control es un “huevito” negro con dos botones. Usen solo el botón grande: abre el portón.",
-              "El botón chico es el paso peatonal; por favor no lo usen.",
-              "El portón abre hasta tocar la pared y se cierra solo a los 25 segundos.",
-              "Al irse, devuelvan el control dentro de la caja de llaves."
-            ] },
-            { "t": "nota", "x": "El establecimiento no se responsabiliza por daños parciales ni robo del vehículo, ni por objetos dejados en su interior." }
+            {
+              "t": "p",
+              "x": "Si solicitaron cochera, les corresponde la cochera {{cochera.letra}}. Usen únicamente la asignada: el edificio aplica multas altas por usar otra."
+            },
+            {
+              "t": "ul",
+              "items": [
+                "El control es un “huevito” negro con dos botones. Usen solo el botón grande: abre el portón.",
+                "El botón chico es el paso peatonal; por favor no lo usen.",
+                "El portón abre hasta tocar la pared y se cierra solo a los 25 segundos.",
+                "Al irse, devuelvan el control dentro de la caja de llaves."
+              ]
+            },
+            {
+              "t": "nota",
+              "x": "El establecimiento no se responsabiliza por daños parciales ni robo del vehículo, ni por objetos dejados en su interior."
+            }
           ]
         },
         {
@@ -75,9 +133,19 @@
           "icono": "alert",
           "resumen": "Llaves de gas",
           "bloques": [
-            { "t": "p", "x": "Las llaves de gas de la cocina y de la caldera (en el lavadero) están al lado de cada artefacto y permanecen siempre abiertas. No las manipulen." },
-            { "t": "nota", "x": "Solo ante una emergencia (olor a gas), cierren la llave y avisen de inmediato al encargado del departamento." },
-            { "t": "wa", "x": "Avisar al encargado", "msg": "Hola, soy huésped de {{nombre}} y tengo una emergencia con el gas." }
+            {
+              "t": "p",
+              "x": "Las llaves de gas de la cocina y de la caldera (en el lavadero) están al lado de cada artefacto y permanecen siempre abiertas. No las manipulen."
+            },
+            {
+              "t": "nota",
+              "x": "Solo ante una emergencia (olor a gas), cierren la llave y avisen de inmediato al encargado del departamento."
+            },
+            {
+              "t": "wa",
+              "x": "Avisar al encargado",
+              "msg": "Hola, soy huésped de {{nombre}} y tengo una emergencia con el gas."
+            }
           ]
         },
         {
@@ -86,12 +154,19 @@
           "icono": "sparkle",
           "resumen": "Costos y cómo pedirlo",
           "bloques": [
-            { "t": "ul", "items": [
-              "Estadías de 5 noches o más: limpieza general y cambio de sábanas y toallas sin costo, a pedido.",
-              "Estadías de menos de 5 noches: limpieza general con cambio de sábanas y toallas, USD 20.",
-              "Solo recambio de toallas y toallones, a pedido: en estadías cortas tiene un costo de USD 7 (hoy, unos $10.000)."
-            ] },
-            { "t": "wa", "x": "Pedir limpieza o recambio", "msg": "Hola, soy huésped de {{nombre}}. Quisiera pedir limpieza / recambio de ropa blanca." }
+            {
+              "t": "ul",
+              "items": [
+                "Estadías de 5 noches o más: limpieza general y cambio de sábanas y toallas sin costo, a pedido.",
+                "Estadías de menos de 5 noches: limpieza general con cambio de sábanas y toallas, USD 20.",
+                "Solo recambio de toallas y toallones, a pedido: en estadías cortas tiene un costo de USD 7 (hoy, unos $10.000)."
+              ]
+            },
+            {
+              "t": "wa",
+              "x": "Pedir limpieza o recambio",
+              "msg": "Hola, soy huésped de {{nombre}}. Quisiera pedir limpieza / recambio de ropa blanca."
+            }
           ]
         }
       ]
@@ -107,16 +182,47 @@
           "icono": "key",
           "resumen": "Caja de llaves y acceso",
           "bloques": [
-            { "t": "p", "x": "En la puerta principal del edificio, junto a los porteros, hay cuatro cajas de llaves. Usen la que está marcada en la foto (la tercera desde la izquierda)." },
-            { "t": "img", "src": "images/mi-estadia/cajas.jpg", "alt": "Cuatro cajas de llaves; la tercera desde la izquierda está marcada" },
-            { "t": "ol", "items": [
-              "Ingresen el código que les envió el encargado, giren la perilla junto a los números y tiren para abrir.",
-              "Adentro encontrarán la llave del departamento y el sensor (y el control de la cochera, si la solicitaron).",
-              "Cierren la caja y mezclen la combinación.",
-              "Para abrir la puerta del edificio, acerquen el sensor a la caja negra del panel de vidrio, a la izquierda de la puerta principal.",
-              "Por favor, cierren la puerta del edificio al entrar y al salir."
-            ] },
-            { "t": "wa", "x": "¿Algún problema para ingresar?", "msg": "Hola, soy huésped de {{nombre}} y tengo un problema para ingresar." }
+            {
+              "t": "p",
+              "x": "En la puerta principal del edificio, junto a los porteros, hay cuatro cajas de llaves. Usen la que está marcada en la foto (la tercera desde la izquierda)."
+            },
+            {
+              "t": "img",
+              "src": "images/mi-estadia/cajas.jpg",
+              "alt": "Cuatro cajas de llaves; la tercera desde la izquierda está marcada"
+            },
+            {
+              "t": "ol",
+              "items": [
+                "Ingresen el código que les envió el encargado, giren la perilla junto a los números y tiren para abrir.",
+                "Adentro encontrarán la llave del departamento y el sensor (y el control de la cochera, si la solicitaron).",
+                "Cierren la caja y mezclen la combinación."
+              ]
+            },
+            {
+              "t": "ol",
+              "inicio": 4,
+              "items": [
+                "Para abrir la puerta del edificio, acerquen el sensor al lector de la pared, a la izquierda de la puerta principal (marcado en la foto)."
+              ]
+            },
+            {
+              "t": "img",
+              "src": "images/mi-estadia/sensor.jpg",
+              "alt": "Lector del edificio, junto a la puerta principal, donde se acerca el sensor (marcado en verde)"
+            },
+            {
+              "t": "ol",
+              "inicio": 5,
+              "items": [
+                "Por favor, cierren la puerta del edificio al entrar y al salir, y verifiquen que haya quedado bien cerrada."
+              ]
+            },
+            {
+              "t": "wa",
+              "x": "¿Algún problema para ingresar?",
+              "msg": "Hola, soy huésped de {{nombre}} y tengo un problema para ingresar."
+            }
           ]
         },
         {
@@ -125,12 +231,19 @@
           "icono": "door",
           "resumen": "Qué dejar y dónde",
           "bloques": [
-            { "t": "ul", "items": [
-              "Dejen dentro de la caja de llaves la llave del departamento y el sensor.",
-              "Si usaron cochera, dejen también el control del portón.",
-              "Cierren la caja y mezclen la combinación."
-            ] },
-            { "t": "p", "x": "El check-out es hasta las 10:00." }
+            {
+              "t": "ul",
+              "items": [
+                "Solo al finalizar la estadía (no en cada salida): dejen dentro de la caja de llaves la llave del departamento y el sensor.",
+                "Si usaron cochera, dejen también el control del portón.",
+                "Cierren la caja y mezclen la combinación.",
+                "Al salir, cierren la puerta del edificio y verifiquen que haya quedado bien cerrada."
+              ]
+            },
+            {
+              "t": "p",
+              "x": "El check-out es hasta las 10:00."
+            }
           ]
         },
         {
@@ -139,13 +252,35 @@
           "icono": "clock",
           "resumen": "Check-in, check-out y extras",
           "bloques": [
-            { "t": "kv", "filas": [["Check-in", "desde las 15:00"], ["Check-out", "hasta las 10:00"]] },
-            { "t": "p", "x": "Si el departamento ya está listo, pueden ingresar un poco antes. Consúltenlo con el encargado." },
-            { "t": "ul", "items": [
-              "Early check-in: desde las 4:00, a media tarifa y sujeto a disponibilidad.",
-              "Late check-out: hasta las 18:00, a media tarifa y sujeto a disponibilidad. Pasadas las 18:00 se cobra el día completo."
-            ] },
-            { "t": "wa", "x": "Consultar early check-in / late check-out", "msg": "Hola, soy huésped de {{nombre}}. Quisiera consultar por early check-in / late check-out." }
+            {
+              "t": "kv",
+              "filas": [
+                [
+                  "Check-in",
+                  "desde las 15:00"
+                ],
+                [
+                  "Check-out",
+                  "hasta las 10:00"
+                ]
+              ]
+            },
+            {
+              "t": "p",
+              "x": "Si el departamento ya está listo, pueden ingresar un poco antes. Consúltenlo con el encargado."
+            },
+            {
+              "t": "ul",
+              "items": [
+                "Early check-in: desde las 4:00, a media tarifa y sujeto a disponibilidad.",
+                "Late check-out: hasta las 18:00, a media tarifa y sujeto a disponibilidad. Pasadas las 18:00 se cobra el día completo."
+              ]
+            },
+            {
+              "t": "wa",
+              "x": "Consultar early check-in / late check-out",
+              "msg": "Hola, soy huésped de {{nombre}}. Quisiera consultar por early check-in / late check-out."
+            }
           ]
         },
         {
@@ -154,16 +289,22 @@
           "icono": "list",
           "resumen": "Convivencia y cuidado",
           "bloques": [
-            { "t": "ul", "items": [
-              "Respeten la cantidad de personas registrada. Si se suma alguien, avisen antes al encargado.",
-              "Está prohibido fumar en todo el edificio.",
-              "Si viajan con mascota, avisen antes al encargado.",
-              "Horario de silencio: de 23:00 a 8:00. Eviten TV, radio con volumen alto y otros ruidos molestos.",
-              "No se permiten fiestas ni reuniones que alteren el orden, ni juegos de azar prohibidos por la ley.",
-              "Usen solo los artefactos del departamento. Por seguridad no se permiten planchas, secadores de ropa ni otros aparatos que puedan provocar un incendio.",
-              "Los daños, o la pérdida de llaves, sensor, control de cochera, TV o aire acondicionado, se abonan (reparación o reposición)."
-            ] },
-            { "t": "nota", "x": "Salta Departamentos no se responsabiliza por objetos de valor dejados en el departamento ni en áreas comunes." }
+            {
+              "t": "ul",
+              "items": [
+                "Respeten la cantidad de personas registrada. Si se suma alguien, avisen antes al encargado.",
+                "Está prohibido fumar en todo el edificio.",
+                "Si viajan con mascota, avisen antes al encargado.",
+                "Horario de silencio: de 23:00 a 8:00. Eviten TV, radio con volumen alto y otros ruidos molestos.",
+                "No se permiten fiestas ni reuniones que alteren el orden, ni juegos de azar prohibidos por la ley.",
+                "Usen solo los artefactos del departamento. Por seguridad no se permiten planchas, secadores de ropa ni otros aparatos que puedan provocar un incendio.",
+                "Los daños, o la pérdida de llaves, sensor, control de cochera, TV o aire acondicionado, se abonan (reparación o reposición)."
+              ]
+            },
+            {
+              "t": "nota",
+              "x": "Salta Departamentos no se responsabiliza por objetos de valor dejados en el departamento ni en áreas comunes."
+            }
           ]
         },
         {
@@ -172,9 +313,21 @@
           "icono": "pool",
           "resumen": "De noviembre a abril",
           "bloques": [
-            { "t": "temporada", "desde": 11, "hasta": 4, "abierta": "La pileta está habilitada.", "cerrada": "La pileta se habilita en noviembre." },
-            { "t": "p", "x": "Funciona de noviembre a abril. Pueden usarla 2 personas por departamento, para no saturarla: los 34 departamentos del edificio tienen derecho a usarla." },
-            { "t": "p", "x": "Si no hay mucha gente, pueden ir 3 o 4 personas del mismo departamento." }
+            {
+              "t": "temporada",
+              "desde": 11,
+              "hasta": 4,
+              "abierta": "La pileta está habilitada.",
+              "cerrada": "La pileta se habilita en noviembre."
+            },
+            {
+              "t": "p",
+              "x": "Funciona de noviembre a abril. Pueden usarla 2 personas por departamento, para no saturarla: los 34 departamentos del edificio tienen derecho a usarla."
+            },
+            {
+              "t": "p",
+              "x": "Si no hay mucha gente, pueden ir 3 o 4 personas del mismo departamento."
+            }
           ]
         },
         {
@@ -183,10 +336,23 @@
           "icono": "grill",
           "resumen": "Reserva con 24 h de anticipación",
           "bloques": [
-            { "t": "p", "x": "Se reserva directamente con el encargado del departamento, con más de 24 horas de anticipación. La administración del edificio exige que la reserva se cargue en su aplicación." },
-            { "t": "nota", "x": "Ejemplo: para usar el quincho mañana a las 11:00, deben pedirlo hoy hasta las 10:30." },
-            { "t": "p", "x": "Se abona únicamente la limpieza: USD 10." },
-            { "t": "wa", "x": "Reservar el quincho", "msg": "Hola, soy huésped de {{nombre}}. Quisiera reservar el quincho el día ___ a las ___." }
+            {
+              "t": "p",
+              "x": "Se reserva directamente con el encargado del departamento, con más de 24 horas de anticipación. La administración del edificio exige que la reserva se cargue en su aplicación."
+            },
+            {
+              "t": "nota",
+              "x": "Ejemplo: para usar el quincho mañana a las 11:00, deben pedirlo hoy hasta las 10:30."
+            },
+            {
+              "t": "p",
+              "x": "Se abona únicamente la limpieza: USD 10."
+            },
+            {
+              "t": "wa",
+              "x": "Reservar el quincho",
+              "msg": "Hola, soy huésped de {{nombre}}. Quisiera reservar el quincho el día ___ a las ___."
+            }
           ]
         },
         {
@@ -195,7 +361,10 @@
           "icono": "trash",
           "resumen": "Cesto de la vereda",
           "bloques": [
-            { "t": "p", "x": "Cada huésped lleva su basura al cesto grande que está en la vereda del edificio." }
+            {
+              "t": "p",
+              "x": "Cada huésped lleva su basura al cesto grande que está en la vereda del edificio."
+            }
           ]
         },
         {
@@ -204,8 +373,15 @@
           "icono": "wash",
           "resumen": "A unos 50 m, en Arenales 211",
           "bloques": [
-            { "t": "p", "x": "Por el momento los departamentos no cuentan con lavarropas. Les sugerimos la lavandería que está a unos 50 metros del edificio, en Arenales 211." },
-            { "t": "link", "x": "Ver en el mapa", "href": "https://www.google.com/maps/search/?api=1&query=Arenales+211,+Salta" }
+            {
+              "t": "p",
+              "x": "Por el momento los departamentos no cuentan con lavarropas. Les sugerimos la lavandería que está a unos 50 metros del edificio, en Arenales 211."
+            },
+            {
+              "t": "link",
+              "x": "Ver en el mapa",
+              "href": "https://www.google.com/maps/search/?api=1&query=Arenales+211,+Salta"
+            }
           ]
         }
       ]
@@ -221,24 +397,91 @@
           "icono": "pin",
           "resumen": "Mapa con farmacia, verdulería y más",
           "bloques": [
-            { "t": "mapa", "centro": [-24.7718, -65.4051], "zoom": 15, "puntos": [
-              { "n": "Edificio · Pueyrredón 1485", "lat": -24.77172, "lng": -65.40508, "tipo": "casa", "aprox": true, "nota": "Ubicación aproximada" },
-              { "n": "Farmacia", "lat": -24.77225, "lng": -65.40508, "tipo": "farmacia", "aprox": true, "nota": "Esquina de Pueyrredón y Arenales" },
-              { "n": "Verdulería y almacén", "lat": -24.77225, "lng": -65.40418, "tipo": "tienda", "aprox": true, "nota": "Arenales y Vicente López" },
-              { "n": "Carnicería", "lat": -24.77135, "lng": -65.40418, "tipo": "tienda", "aprox": true, "nota": "Anzoátegui y Vicente López" },
-              { "n": "Lavandería", "lat": -24.77228, "lng": -65.40478, "tipo": "lavanderia", "aprox": true, "nota": "Arenales 211" },
-              { "n": "Clínica Tres Cerritos", "lat": -24.7658658, "lng": -65.402867, "tipo": "salud", "nota": "Av. Juan B. Justo 93 · guardia 24 h" },
-              { "n": "Alto NOA Shopping", "lat": -24.7811544, "lng": -65.4028022, "tipo": "compras", "nota": "Av. del Bicentenario 702" },
-              { "n": "Jumbo y Easy", "lat": -24.7727608, "lng": -65.4127455, "tipo": "compras", "nota": "20 de Febrero 1437" }
-            ] },
-            { "t": "nota", "x": "Las ubicaciones marcadas como aproximadas son orientativas; las direcciones de esquina están en cada marcador." },
-            { "t": "ul", "items": [
-              "Farmacia: en la esquina de Pueyrredón y Arenales.",
-              "Verdulería y almacén: Arenales y Vicente López.",
-              "Carnicería: Anzoátegui y Vicente López.",
-              "Alto NOA Shopping, a aproximadamente 1 km.",
-              "Jumbo y Easy, a aproximadamente 800 m."
-            ] }
+            {
+              "t": "mapa",
+              "centro": [
+                -24.7718,
+                -65.4051
+              ],
+              "zoom": 15,
+              "puntos": [
+                {
+                  "n": "Edificio · Pueyrredón 1485",
+                  "lat": -24.77172,
+                  "lng": -65.40508,
+                  "tipo": "casa",
+                  "aprox": true,
+                  "nota": "Ubicación aproximada"
+                },
+                {
+                  "n": "Farmacia",
+                  "lat": -24.77225,
+                  "lng": -65.40508,
+                  "tipo": "farmacia",
+                  "aprox": true,
+                  "nota": "Esquina de Pueyrredón y Arenales"
+                },
+                {
+                  "n": "Verdulería y almacén",
+                  "lat": -24.77225,
+                  "lng": -65.40418,
+                  "tipo": "tienda",
+                  "aprox": true,
+                  "nota": "Arenales y Vicente López"
+                },
+                {
+                  "n": "Carnicería",
+                  "lat": -24.77135,
+                  "lng": -65.40418,
+                  "tipo": "tienda",
+                  "aprox": true,
+                  "nota": "Anzoátegui y Vicente López"
+                },
+                {
+                  "n": "Lavandería",
+                  "lat": -24.77228,
+                  "lng": -65.40478,
+                  "tipo": "lavanderia",
+                  "aprox": true,
+                  "nota": "Arenales 211"
+                },
+                {
+                  "n": "Clínica Tres Cerritos",
+                  "lat": -24.7658658,
+                  "lng": -65.402867,
+                  "tipo": "salud",
+                  "nota": "Av. Juan B. Justo 93 · guardia 24 h"
+                },
+                {
+                  "n": "Alto NOA Shopping",
+                  "lat": -24.7811544,
+                  "lng": -65.4028022,
+                  "tipo": "compras",
+                  "nota": "Av. del Bicentenario 702"
+                },
+                {
+                  "n": "Jumbo y Easy",
+                  "lat": -24.7727608,
+                  "lng": -65.4127455,
+                  "tipo": "compras",
+                  "nota": "20 de Febrero 1437"
+                }
+              ]
+            },
+            {
+              "t": "nota",
+              "x": "Las ubicaciones marcadas como aproximadas son orientativas; las direcciones de esquina están en cada marcador."
+            },
+            {
+              "t": "ul",
+              "items": [
+                "Farmacia: en la esquina de Pueyrredón y Arenales.",
+                "Verdulería y almacén: Arenales y Vicente López.",
+                "Carnicería: Anzoátegui y Vicente López.",
+                "Alto NOA Shopping, a aproximadamente 1 km.",
+                "Jumbo y Easy, a aproximadamente 800 m."
+              ]
+            }
           ]
         },
         {
@@ -247,14 +490,40 @@
           "icono": "music",
           "resumen": "5 peñas folclóricas",
           "bloques": [
-            { "t": "p", "x": "La calle Balcarce es el paseo de las peñas folclóricas: música en vivo, baile, cocina regional, restaurantes y bares. Casi todas cobran un adicional por el show; conviene reservar y llevar efectivo." },
-            { "t": "lista", "items": [
-              { "n": "Peña La Vieja Estación", "dir": "Balcarce 875", "nota": "Muy conocida; cena con show de baile y música en vivo." },
-              { "n": "Peña Chaqueño Palavecino", "dir": "Balcarce 935", "nota": "Peña tradicional de la calle, con música en vivo." },
-              { "n": "Peña La Amanecida", "dir": "Balcarce 817", "nota": "Ambiente festivo, porciones abundantes y artistas en vivo." },
-              { "n": "Peña La Cautiva", "dir": "Balcarce 892", "nota": "Cocina regional y folclore." },
-              { "n": "Peña Los Cardones", "dir": "Balcarce 922", "nota": "Folclore en vivo; conviene llevar efectivo." }
-            ] }
+            {
+              "t": "p",
+              "x": "La calle Balcarce es el paseo de las peñas folclóricas: música en vivo, baile, cocina regional, restaurantes y bares. Casi todas cobran un adicional por el show; conviene reservar y llevar efectivo."
+            },
+            {
+              "t": "lista",
+              "items": [
+                {
+                  "n": "Peña La Vieja Estación",
+                  "dir": "Balcarce 875",
+                  "nota": "Muy conocida; cena con show de baile y música en vivo."
+                },
+                {
+                  "n": "Peña Chaqueño Palavecino",
+                  "dir": "Balcarce 935",
+                  "nota": "Peña tradicional de la calle, con música en vivo."
+                },
+                {
+                  "n": "Peña La Amanecida",
+                  "dir": "Balcarce 817",
+                  "nota": "Ambiente festivo, porciones abundantes y artistas en vivo."
+                },
+                {
+                  "n": "Peña La Cautiva",
+                  "dir": "Balcarce 892",
+                  "nota": "Cocina regional y folclore."
+                },
+                {
+                  "n": "Peña Los Cardones",
+                  "dir": "Balcarce 922",
+                  "nota": "Folclore en vivo; conviene llevar efectivo."
+                }
+              ]
+            }
           ]
         },
         {
@@ -263,14 +532,40 @@
           "icono": "food",
           "resumen": "5 lugares para comer y salir",
           "bloques": [
-            { "t": "p", "x": "Sobre la calle General Güemes hay restaurantes, parrillas y bares con música en vivo." },
-            { "t": "lista", "items": [
-              { "n": "El Paseo Güemes", "dir": "Gral. Güemes 186", "nota": "Parrilla y cocina salteña." },
-              { "n": "Don Atilio", "dir": "Gral. Güemes 204", "nota": "Cena con música folclórica en vivo. Cierra los lunes." },
-              { "n": "La Güemesiana", "dir": "Gral. Güemes 236", "nota": "Cocina regional con show; muy concurrida." },
-              { "n": "Ciudad Güemes", "dir": "Gral. Güemes 255", "nota": "Parrilla, pastas y pescados. Cierra los lunes." },
-              { "n": "Paneo Focaccia", "dir": "Gral. Güemes 375", "nota": "Sándwiches y focaccia. Cierra los domingos." }
-            ] }
+            {
+              "t": "p",
+              "x": "Sobre la calle General Güemes hay restaurantes, parrillas y bares con música en vivo."
+            },
+            {
+              "t": "lista",
+              "items": [
+                {
+                  "n": "El Paseo Güemes",
+                  "dir": "Gral. Güemes 186",
+                  "nota": "Parrilla y cocina salteña."
+                },
+                {
+                  "n": "Don Atilio",
+                  "dir": "Gral. Güemes 204",
+                  "nota": "Cena con música folclórica en vivo. Cierra los lunes."
+                },
+                {
+                  "n": "La Güemesiana",
+                  "dir": "Gral. Güemes 236",
+                  "nota": "Cocina regional con show; muy concurrida."
+                },
+                {
+                  "n": "Ciudad Güemes",
+                  "dir": "Gral. Güemes 255",
+                  "nota": "Parrilla, pastas y pescados. Cierra los lunes."
+                },
+                {
+                  "n": "Paneo Focaccia",
+                  "dir": "Gral. Güemes 375",
+                  "nota": "Sándwiches y focaccia. Cierra los domingos."
+                }
+              ]
+            }
           ]
         },
         {
@@ -279,14 +574,40 @@
           "icono": "food",
           "resumen": "5 restaurantes clásicos",
           "bloques": [
-            { "t": "lista", "items": [
-              { "n": "Doña Salta", "dir": "Córdoba 46", "nota": "Cocina regional clásica: empanadas, locro y humita." },
-              { "n": "La Casona del Molino", "dir": "Luis Burela 1", "nota": "Peña y comida regional en una casona; suele haber espera." },
-              { "n": "Aires Caseros", "dir": "Buenos Aires 11", "nota": "Platos regionales con buena atención." },
-              { "n": "El Bodeguero", "dir": "20 de Febrero 877", "nota": "Cocina de autor con carta de vinos." },
-              { "n": "Adobe Cocina Regional", "dir": "Caseros 511", "nota": "Tabla salteña y balcón sobre la plaza 9 de Julio." }
-            ] },
-            { "t": "nota", "x": "Verifiquen horarios y reserven con anticipación, sobre todo en fines de semana y temporada alta." }
+            {
+              "t": "lista",
+              "items": [
+                {
+                  "n": "Doña Salta",
+                  "dir": "Córdoba 46",
+                  "nota": "Cocina regional clásica: empanadas, locro y humita."
+                },
+                {
+                  "n": "La Casona del Molino",
+                  "dir": "Luis Burela 1",
+                  "nota": "Peña y comida regional en una casona; suele haber espera."
+                },
+                {
+                  "n": "Aires Caseros",
+                  "dir": "Buenos Aires 11",
+                  "nota": "Platos regionales con buena atención."
+                },
+                {
+                  "n": "El Bodeguero",
+                  "dir": "20 de Febrero 877",
+                  "nota": "Cocina de autor con carta de vinos."
+                },
+                {
+                  "n": "Adobe Cocina Regional",
+                  "dir": "Caseros 511",
+                  "nota": "Tabla salteña y balcón sobre la plaza 9 de Julio."
+                }
+              ]
+            },
+            {
+              "t": "nota",
+              "x": "Verifiquen horarios y reserven con anticipación, sobre todo en fines de semana y temporada alta."
+            }
           ]
         },
         {
@@ -295,16 +616,50 @@
           "icono": "mountain",
           "resumen": "Con Valles del Norte Viajes",
           "bloques": [
-            { "t": "p", "x": "Nuestra agencia, Valles del Norte Viajes y Turismo, ofrece las excursiones clásicas del norte argentino." },
-            { "t": "excursiones", "items": [
-              { "n": "City Tour Salta", "x": "Recorrido por los puntos principales de la ciudad.", "href": "https://www.vallesdelnorte.tur.ar/city-tour-salta" },
-              { "n": "Cafayate y bodegas", "x": "Quebrada de las Conchas y visita a bodegas.", "href": "https://www.vallesdelnorte.tur.ar/cafayate-bodegas" },
-              { "n": "Cachi", "x": "Valles Calchaquíes, pueblos y paisajes de altura.", "href": "https://www.vallesdelnorte.tur.ar/cachi" },
-              { "n": "Quebrada de Humahuaca", "x": "Los pueblos y colores de la quebrada, en Jujuy.", "href": "https://www.vallesdelnorte.tur.ar/quebrada-humahuaca" },
-              { "n": "Tren a las Nubes", "x": "El tren turístico más famoso de la Argentina.", "href": "https://www.vallesdelnorte.tur.ar/trenalasnubes" }
-            ] },
-            { "t": "link", "x": "Más información y reservas en vallesdelnorte.tur.ar", "href": "https://www.vallesdelnorte.tur.ar" },
-            { "t": "wa_valles", "x": "Consultar por WhatsApp (atiende Telma)", "msg": "Hola, soy huésped de Salta Departamentos ({{nombre}}) y quisiera consultar por excursiones." }
+            {
+              "t": "p",
+              "x": "Nuestra agencia, Valles del Norte Viajes y Turismo, ofrece las excursiones clásicas del norte argentino."
+            },
+            {
+              "t": "excursiones",
+              "items": [
+                {
+                  "n": "City Tour Salta",
+                  "x": "Recorrido por los puntos principales de la ciudad.",
+                  "href": "https://www.vallesdelnorte.tur.ar/city-tour-salta"
+                },
+                {
+                  "n": "Cafayate y bodegas",
+                  "x": "Quebrada de las Conchas y visita a bodegas.",
+                  "href": "https://www.vallesdelnorte.tur.ar/cafayate-bodegas"
+                },
+                {
+                  "n": "Cachi",
+                  "x": "Valles Calchaquíes, pueblos y paisajes de altura.",
+                  "href": "https://www.vallesdelnorte.tur.ar/cachi"
+                },
+                {
+                  "n": "Quebrada de Humahuaca",
+                  "x": "Los pueblos y colores de la quebrada, en Jujuy.",
+                  "href": "https://www.vallesdelnorte.tur.ar/quebrada-humahuaca"
+                },
+                {
+                  "n": "Tren a las Nubes",
+                  "x": "El tren turístico más famoso de la Argentina.",
+                  "href": "https://www.vallesdelnorte.tur.ar/trenalasnubes"
+                }
+              ]
+            },
+            {
+              "t": "link",
+              "x": "Más información y reservas en vallesdelnorte.tur.ar",
+              "href": "https://www.vallesdelnorte.tur.ar"
+            },
+            {
+              "t": "wa_valles",
+              "x": "Consultar por WhatsApp (atiende Telma)",
+              "msg": "Hola, soy huésped de Salta Departamentos ({{nombre}}) y quisiera consultar por excursiones."
+            }
           ]
         }
       ]
@@ -320,9 +675,20 @@
           "icono": "chat",
           "resumen": "WhatsApp y teléfono",
           "bloques": [
-            { "t": "p", "x": "Para cualquier consulta o emergencia, comuníquense directamente con el encargado del departamento." },
-            { "t": "wa", "x": "Escribir por WhatsApp", "msg": "Hola, soy huésped de {{nombre}}." },
-            { "t": "tel", "x": "Llamar al teléfono fijo", "fijo": true }
+            {
+              "t": "p",
+              "x": "Para cualquier consulta o emergencia, comuníquense directamente con el encargado del departamento."
+            },
+            {
+              "t": "wa",
+              "x": "Escribir por WhatsApp",
+              "msg": "Hola, soy huésped de {{nombre}}."
+            },
+            {
+              "t": "tel",
+              "x": "Llamar al teléfono fijo",
+              "fijo": true
+            }
           ]
         },
         {
@@ -331,12 +697,19 @@
           "icono": "heart",
           "resumen": "Clínica, farmacia y teléfonos",
           "bloques": [
-            { "t": "ul", "items": [
-              "Clínica Tres Cerritos, a pocas cuadras: Av. Juan B. Justo 93, con guardia las 24 horas.",
-              "Farmacia en la esquina de Pueyrredón y Arenales.",
-              "Emergencias: 911 · Ambulancia: 107 · Bomberos: 100."
-            ] },
-            { "t": "link", "x": "Cómo llegar a la Clínica Tres Cerritos", "href": "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Tres+Cerritos+Salta" }
+            {
+              "t": "ul",
+              "items": [
+                "Clínica Tres Cerritos, a pocas cuadras: Av. Juan B. Justo 93, con guardia las 24 horas.",
+                "Farmacia en la esquina de Pueyrredón y Arenales.",
+                "Emergencias: 911 · Ambulancia: 107 · Bomberos: 100."
+              ]
+            },
+            {
+              "t": "link",
+              "x": "Cómo llegar a la Clínica Tres Cerritos",
+              "href": "https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Tres+Cerritos+Salta"
+            }
           ]
         }
       ]

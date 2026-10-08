@@ -201,7 +201,7 @@ function bloque(b){
   var c=G.contacto||{};
   switch(b.t){
   case "p": return '<p>'+esc(b.x)+'</p>';
-  case "ol": return '<ol>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
+  case "ol": return '<ol'+(b.inicio?' start="'+(b.inicio|0)+'"':'')+'>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ol>';
   case "ul": return '<ul>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
   case "nota": return '<div class="nota">'+esc(b.x)+'</div>';
   case "img": return '<img class="foto" loading="lazy" src="../'+esc(b.src)+'" alt="'+esc(b.alt||"")+'">';
