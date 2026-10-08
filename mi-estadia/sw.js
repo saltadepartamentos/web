@@ -1,7 +1,7 @@
 /* Service worker de /mi-estadia/: deja la página y sus fotos disponibles sin conexión.
    La guía (con la clave del Wi-Fi) NO se guarda acá: la página la guarda en el
    almacenamiento del propio dispositivo y se borra si el enlace deja de ser válido. */
-const CACHE = "mi-estadia-v4";
+const CACHE = "mi-estadia-v5";
 const PAGINA = new URL("./", self.location).pathname; // /mi-estadia/
 const BASE = [PAGINA, "../images/logo-icon.png", "../favicon-32.png", "../apple-touch-icon.png",
   "../images/mi-estadia/cajas.jpg", "../images/mi-estadia/puerta.jpg", "../images/mi-estadia/termostato.jpg"];
@@ -29,7 +29,8 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
       fetch(req)
         .then((r) => {
-          if (r.ok) { const copia = r.clone(); caches.open(CACHE).then((c) => c.put(PAGINA, copia)); }
+          // Solo la página principal se guarda; las rutas cortas (/mi-estadia/5toA/) solo redirigen.
+          if (r.ok && url.pathname === PAGINA) { const copia = r.clone(); caches.open(CACHE).then((c) => c.put(PAGINA, copia)); }
           return r;
         })
         .catch(() => caches.match(PAGINA, { ignoreSearch: true }))
