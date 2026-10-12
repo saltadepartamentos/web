@@ -46,7 +46,7 @@
       {
         "icono": "car",
         "titulo": "Si tienen cochera: la {{cochera.letra}}",
-        "x": "Estacionen solo en esa. Antes de llegar, vean dónde queda y cómo entrar; si no la encuentran, escríbannos antes de estacionar en otro lugar.",
+        "x": "Estacionen solo en esa. El portón negro está a la izquierda de la puerta principal del edificio. Si no la encuentran, escríbannos antes de estacionar en otro lugar.",
         "ir": "cochera",
         "ver": "Ver la cochera"
       }
@@ -135,12 +135,38 @@
             },
             {
               "t": "p",
-              "x": "Si solicitaron cochera, les corresponde la {{cochera.letra}}. El control está dentro de la caja de llaves, junto a la llave del departamento y el sensor."
+              "x": "La cochera está incluida en la reserva. Si reservaron por Booking, se cobra aparte: solo pueden usarla si la solicitaron."
+            },
+            {
+              "t": "h",
+              "x": "Dónde queda"
+            },
+            {
+              "t": "p",
+              "x": "Está en la misma calle del edificio: el portón negro de la cochera queda a la izquierda de la puerta principal. El control para abrirlo está dentro de la caja de llaves, junto a la llave del departamento y el sensor."
+            },
+            {
+              "t": "p",
+              "solo": [
+                "5toa"
+              ],
+              "x": "Ya adentro, su cochera es la I: la última de la mano derecha. Les sugerimos estacionar de cola."
+            },
+            {
+              "t": "p",
+              "solo": [
+                "8vob"
+              ],
+              "x": "Ya adentro, su cochera es la Q: la primera de la mano derecha. Les sugerimos estacionar de cola."
+            },
+            {
+              "t": "h",
+              "x": "Cómo usar el control"
             },
             {
               "t": "ul",
               "items": [
-                "El control es un “huevito” negro con dos botones. Usen solo el botón grande: abre el portón.",
+                "Es un “huevito” negro con dos botones. Usen solo el botón grande: abre el portón.",
                 "El botón chico es el paso peatonal; por favor no lo usen.",
                 "El portón abre hasta tocar la pared y se cierra solo a los 25 segundos.",
                 "Al irse, devuelvan el control dentro de la caja de llaves."
@@ -243,7 +269,7 @@
             },
             {
               "t": "nota",
-              "x": "Si llegan en auto, antes de estacionar abran la tarjeta «Cochera» (en «Mi depto») para saber dónde queda."
+              "x": "Si llegan en auto: primero retiren de la caja de llaves el control de la cochera. El portón negro está a la izquierda de la puerta principal. Más detalles en la tarjeta «Cochera» (en «Mi depto»)."
             },
             {
               "t": "p",
