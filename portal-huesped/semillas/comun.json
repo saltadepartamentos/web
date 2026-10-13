@@ -150,14 +150,14 @@
               "solo": [
                 "5toa"
               ],
-              "x": "Ya adentro, su cochera es la I: la última de la mano derecha. Les sugerimos estacionar de cola."
+              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}} (la letra i, minúscula): la última de la mano derecha al ingresar. Les sugerimos estacionar de cola."
             },
             {
               "t": "p",
               "solo": [
                 "8vob"
               ],
-              "x": "Ya adentro, su cochera es la Q: la primera de la mano derecha. Les sugerimos estacionar de cola."
+              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}}: la primera de la mano derecha al ingresar. Les sugerimos estacionar de cola."
             },
             {
               "t": "h",
