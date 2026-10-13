@@ -20,6 +20,7 @@
       "llegada",
       "wifi",
       "calefaccion",
+      "cochera",
       "salida",
       "reglas",
       "opinion"
@@ -34,23 +35,7 @@
         "v": "hasta las 10:00"
       }
     ],
-    "principal": "como-llegar",
-    "avisos": [
-      {
-        "icono": "ban",
-        "titulo": "Prohibido dejar la clave puesta",
-        "x": "Cada vez que usen la caja de llaves, al cerrarla mezclen los números. Nunca la dejen con el código puesto.",
-        "ir": "llegada",
-        "ver": "Ver cómo ingresar"
-      },
-      {
-        "icono": "car",
-        "titulo": "Si tienen cochera: la {{cochera.letra}}",
-        "x": "Estacionen solo en esa. El portón negro está a la izquierda de la puerta principal del edificio. Si no la encuentran, escríbannos antes de estacionar en otro lugar.",
-        "ir": "cochera",
-        "ver": "Ver la cochera"
-      }
-    ]
+    "principal": "como-llegar"
   },
   "pestanas": [
     {
@@ -125,12 +110,12 @@
           "id": "cochera",
           "titulo": "Cochera",
           "icono": "car",
-          "resumen": "Cochera {{cochera.letra}}: usen solo esa",
+          "resumen": "Cuál es la suya y dónde queda",
           "bloques": [
             {
               "t": "alerta",
               "icono": "car",
-              "titulo": "Usen únicamente la cochera {{cochera.letra}}",
+              "titulo": "Les pedimos usar únicamente la cochera {{cochera.letra}}",
               "x": "El edificio aplica multas altas por usar otra. Si no la encuentran o tienen dudas, escríbannos antes de estacionar en otro lugar."
             },
             {
@@ -293,9 +278,9 @@
           "bloques": [
             {
               "t": "alerta",
-              "icono": "ban",
-              "titulo": "Prohibido dejar la clave puesta",
-              "x": "Al terminar, cierren la caja y mezclen los números. Si queda con el código puesto, cualquier persona puede abrirla y llevarse las llaves."
+              "icono": "key",
+              "titulo": "Se ruega no dejar la clave puesta",
+              "x": "Al terminar, cierren la caja y mezclen los números. Si queda con el código puesto, cualquier persona podría abrirla y llevarse las llaves."
             },
             {
               "t": "nota",
@@ -303,7 +288,7 @@
             },
             {
               "t": "p",
-              "x": "En la puerta principal del edificio, junto a los porteros, hay cuatro cajas de llaves. Usen únicamente la que está marcada en la foto (la tercera desde la izquierda): no prueben el código en las otras."
+              "x": "En la puerta principal del edificio, junto a los porteros, hay cuatro cajas de llaves. Por favor, usen únicamente la que está marcada en la foto (la tercera desde la izquierda) y no prueben el código en las otras."
             },
             {
               "t": "img",
@@ -315,7 +300,7 @@
               "items": [
                 "Ingresen el código que les envió el encargado, giren la perilla junto a los números y tiren para abrir.",
                 "Adentro encontrarán la llave del departamento y el sensor (y el control de la cochera, si la solicitaron).",
-                "Cierren la caja y mezclen los números: está prohibido dejarla con el código puesto."
+                "Cierren la caja y mezclen los números: se ruega no dejarla con el código puesto."
               ]
             },
             {
@@ -359,16 +344,16 @@
           "bloques": [
             {
               "t": "alerta",
-              "icono": "ban",
-              "titulo": "Prohibido dejar la clave puesta",
-              "x": "Al dejar la llave y el sensor, cierren la caja y mezclen los números. Nunca la dejen con el código puesto."
+              "icono": "key",
+              "titulo": "Se ruega no dejar la clave puesta",
+              "x": "Al dejar la llave y el sensor, cierren la caja y mezclen los números. Les agradecemos no dejarla con el código puesto."
             },
             {
               "t": "ul",
               "items": [
                 "SOLO AL FINALIZAR LA ESTADÍA: dejen dentro de la caja de llaves la llave del departamento y el sensor.",
                 "Si usaron cochera, dejen también el control del portón.",
-                "Cierren la caja y mezclen los números: está prohibido dejarla con el código puesto.",
+                "Cierren la caja y mezclen los números: se ruega no dejarla con el código puesto.",
                 "Al salir, cierren la puerta del edificio y verifiquen que haya quedado bien cerrada."
               ]
             },
@@ -433,7 +418,7 @@
             {
               "t": "ul",
               "items": [
-                "Prohibido dejar la caja de llaves con el código puesto: al cerrarla, siempre mezclen los números.",
+                "Se ruega no dejar la caja de llaves con el código puesto: al cerrarla, siempre mezclen los números.",
                 "Silencio de 23:00 a 8:00.",
                 "Prohibido fumar en todo el edificio.",
                 "Mascotas: avisar antes al encargado.",

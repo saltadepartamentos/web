@@ -60,6 +60,7 @@ main{max-width:720px;margin:0 auto;padding:18px 16px 8px;}
 .btn.oro{background:var(--oro);color:var(--noche);} .btn.oro svg{stroke:var(--noche);}
 .btn.borde{background:#fff;color:var(--noche);box-shadow:inset 0 0 0 2px var(--noche);} .btn.borde svg{stroke:var(--noche);}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.tiles .tile:last-child:nth-child(odd){grid-column:1/-1;}
 .tile{background:var(--blanco);border:1px solid var(--borde);border-radius:16px;padding:14px 13px;text-align:left;min-height:104px;
   display:flex;flex-direction:column;justify-content:flex-start;gap:9px;box-shadow:var(--sombra);}
 .tile:active{transform:scale(.98);}
@@ -96,15 +97,15 @@ details.card summary:focus-visible,.tab:focus-visible,.btn:focus-visible,.tile:f
 .card-body h4{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-top:20px!important;padding-top:14px;border-top:1px solid var(--arena);}
 .card-body img.foto{width:100%;height:auto;border-radius:12px;display:block;border:1px solid var(--borde);}
 .nota{background:#FFF6DF;border-left:4px solid var(--oro);border-radius:8px;padding:10px 13px;font-size:15px;}
-.alerta{display:flex;gap:12px;align-items:flex-start;background:#FBE9E5;border:2px solid #B5432E;border-radius:12px;padding:12px 14px;}
-.alerta .ai{flex:none;width:34px;height:34px;border-radius:50%;background:#B5432E;display:grid;place-items:center;}
-.alerta .ai svg{width:20px;height:20px;stroke:#fff;}
-.alerta .at{display:block;font-size:16px;font-weight:800;color:#8F2E1C;text-transform:uppercase;letter-spacing:.03em;line-height:1.25;}
+.alerta{display:flex;gap:12px;align-items:flex-start;background:#FFF6DF;border:1px solid #E9C877;border-left:4px solid var(--oro);border-radius:12px;padding:12px 14px;}
+.alerta .ai{flex:none;width:34px;height:34px;border-radius:50%;background:var(--noche);display:grid;place-items:center;}
+.alerta .ai svg{width:19px;height:19px;stroke:var(--oro);}
+.alerta .at{display:block;font-size:16px;font-weight:700;color:var(--noche);line-height:1.25;}
 .alerta .ax{display:block;font-size:15.5px;color:var(--noche);margin-top:4px;}
 .avisos{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
 .aviso{width:100%;text-align:left;cursor:pointer;}
 .aviso:active{transform:scale(.99);}
-.aviso .ir{display:block;font-size:13.5px;font-weight:600;color:#8F2E1C;margin-top:6px;text-decoration:underline;}
+.aviso .ir{display:block;font-size:13.5px;font-weight:600;color:var(--noche);margin-top:6px;text-decoration:underline;}
 .kv{display:flex;flex-direction:column;gap:8px;}
 .kv .row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--crema);border:1px solid var(--borde);border-radius:12px;padding:10px 12px;}
 .kv .k{font-size:13px;color:var(--tierra);}
@@ -232,7 +233,7 @@ var mapaIniciado = false;
 /* ---------- Render de bloques ---------- */
 function mesEnTemporada(desde,hasta,m){return desde<=hasta ? (m>=desde&&m<=hasta) : (m>=desde||m<=hasta);}
 
-/* Cartel de advertencia (rojo). Como bloque de tarjeta, o como aviso fijo en el inicio (button, lleva a la tarjeta indicada). */
+/* Aviso destacado (tarjeta ámbar con ícono). Como bloque de tarjeta, o como aviso fijo en el inicio (button, lleva a la tarjeta indicada). */
 function alertaHtml(b,tag){
   var ir=(tag==="button"&&b.ir)?' data-ir="'+esc(b.ir)+'"':'';
   return '<'+tag+' class="alerta'+(tag==="button"?' aviso':'')+'"'+ir+(tag==="div"?' role="note"':'')+'><span class="ai">'+ico(b.icono||"ban")+'</span>'+
@@ -249,7 +250,7 @@ function bloque(b){
   case "ul": return '<ul>'+b.items.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>';
   case "nota": return '<div class="nota">'+esc(b.x)+'</div>';
   case "alerta": return alertaHtml(b,"div");
-  case "img": return '<img class="foto" loading="lazy" src="../'+esc(b.src)+'" alt="'+esc(b.alt||"")+'">';
+  case "img": return '<img class="foto" decoding="async" src="../'+esc(b.src)+'" alt="'+esc(b.alt||"")+'">';
   case "kv":
     return '<div class="kv">'+b.filas.map(function(f,i){
       var cop=(b.copiar||[]).indexOf(i)>-1;
