@@ -135,7 +135,7 @@
             },
             {
               "t": "p",
-              "x": "La cochera está incluida en la reserva. Si reservaron por Booking, se cobra aparte: solo pueden usarla si la solicitaron."
+              "x": "La cochera está incluida en la reserva."
             },
             {
               "t": "h",
@@ -150,7 +150,7 @@
               "solo": [
                 "5toa"
               ],
-              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}} (la letra i, minúscula): la última de la mano derecha al ingresar. Les sugerimos estacionar de cola."
+              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio, con cocheras a ambos lados. Su cochera es la {{cochera.letra}} (la letra i, minúscula): la última de la mano derecha al ingresar. Les sugerimos estacionar de cola."
             },
             {
               "t": "img",
@@ -172,7 +172,7 @@
               "solo": [
                 "8vob"
               ],
-              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}}: la primera de la mano derecha al ingresar. Les sugerimos estacionar de cola."
+              "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio, con cocheras a ambos lados. Su cochera es la {{cochera.letra}}: en el medio de la mano izquierda al ingresar. Les sugerimos estacionar de cola."
             },
             {
               "t": "img",
@@ -180,7 +180,7 @@
                 "8vob"
               ],
               "src": "images/mi-estadia/croquis-cochera-8vob.svg",
-              "alt": "Croquis orientativo: se entra por el portón negro, se sigue hacia el fondo y la cochera Q es la primera de la mano derecha"
+              "alt": "Croquis orientativo: se entra por el portón negro, se sigue hacia el fondo y la cochera E está en el medio de la mano izquierda"
             },
             {
               "t": "nota",

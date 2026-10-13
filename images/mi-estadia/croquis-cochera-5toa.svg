@@ -1,23 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" role="img" aria-label="Croquis orientativo: se entra por el portón negro, a la izquierda de la puerta principal, y se sigue hacia el fondo; las cocheras de la mano derecha." font-family="Inter,Arial,Helvetica,sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" role="img" aria-label="Croquis orientativo de las 19 cocheras: se entra por el portón negro, a la izquierda de la puerta principal, y se sigue hacia el fondo. Su cochera: i." font-family="Inter,Arial,Helvetica,sans-serif">
 <rect width="360" height="640" fill="#F6F8F9"/>
 <rect x="10" y="14" width="340" height="448" rx="14" fill="#E6ECEF" stroke="#9FB0BB" stroke-width="1.5" stroke-dasharray="6 5"/>
 <text x="180" y="42" text-anchor="middle" font-size="16" font-weight="700" fill="#0E2432">Sector de cocheras (atrás del edificio)</text>
-<rect x="130" y="84" width="120" height="56" rx="8" fill="#F2B23A" stroke="#0E2432" stroke-width="3"/><text x="190" y="110" text-anchor="middle" font-size="21" font-weight="700" fill="#0E2432">Cochera i</text><text x="190" y="129" text-anchor="middle" font-size="13" font-weight="600" fill="#0E2432">la última</text>
-<rect x="130" y="150" width="120" height="228" rx="8" fill="none" stroke="#9FB0BB" stroke-width="1.5" stroke-dasharray="5 5"/>
-<text x="190" y="270" text-anchor="middle" font-size="14" fill="#3B5568">otras cocheras</text>
-<rect x="130" y="384" width="120" height="56" rx="8" fill="#FFFFFF" stroke="#0E2432" stroke-width="1.5"/><text x="190" y="420" text-anchor="middle" font-size="14" fill="#3B5568">otra cochera</text>
-<path d="M70 556 V104" stroke="#E9A11B" stroke-width="7" fill="none" stroke-linecap="round"/>
-<path d="M54 122 L70 96 L86 122 Z" fill="#E9A11B"/>
-<text transform="translate(52 330) rotate(-90)" text-anchor="middle" font-size="14" font-weight="600" fill="#0E2432">Siguen hacia el fondo</text>
-<path d="M262 104 V440" stroke="#0E2432" stroke-width="2"/>
-<text transform="translate(290 270) rotate(90)" text-anchor="middle" font-size="14" font-weight="600" fill="#0E2432">Mano derecha al ingresar</text>
+<rect x="80" y="382" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="348" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="314" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="280" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="246" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="212" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="178" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="144" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="80" y="110" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="382" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="348" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="314" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="280" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="246" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="212" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="178" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="144" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/><rect x="200" y="110" width="70" height="30" rx="5" fill="#F2B23A" stroke="#0E2432" stroke-width="3"/><text x="235.0" y="132" text-anchor="middle" font-size="21" font-weight="700" fill="#0E2432">i</text><rect x="140" y="64" width="70" height="30" rx="5" fill="#FFFFFF" stroke="#9FB0BB" stroke-width="1.2"/>
+<path d="M175 556 V112" stroke="#E9A11B" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M159 130 L175 104 L191 130 Z" fill="#E9A11B"/>
+<text transform="translate(34 262) rotate(-90)" text-anchor="middle" font-size="14" font-weight="600" fill="#0E2432">Mano izquierda</text>
+<text transform="translate(318 262) rotate(90)" text-anchor="middle" font-size="14" font-weight="600" fill="#0E2432">Mano derecha</text>
+<text x="180" y="437" text-anchor="middle" font-size="17" font-weight="700" fill="#0E2432">Su cochera: i</text>
+<text x="180" y="455" text-anchor="middle" font-size="13" font-weight="600" fill="#0E2432">la última de la mano derecha</text>
 <rect x="10" y="462" width="340" height="112" fill="#3B5568"/>
-<text x="250" y="494" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">Edificio</text>
-<rect x="30" y="462" width="80" height="112" fill="#111111" stroke="#F2B23A" stroke-width="3"/>
-<text x="70" y="512" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">Portón</text>
-<text x="70" y="532" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">negro</text>
-<rect x="220" y="534" width="60" height="40" fill="#F2B23A"/>
-<text x="250" y="524" text-anchor="middle" font-size="13" font-weight="600" fill="#FFFFFF">Puerta principal</text>
+<text x="68" y="494" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">Edificio</text>
+<rect x="130" y="462" width="90" height="112" fill="#111111" stroke="#F2B23A" stroke-width="3"/>
+<text x="175" y="512" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">Portón</text>
+<text x="175" y="532" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">negro</text>
+<rect x="262" y="534" width="64" height="40" fill="#F2B23A"/>
+<text x="294" y="524" text-anchor="middle" font-size="13" font-weight="600" fill="#FFFFFF">Puerta principal</text>
 <rect x="0" y="574" width="360" height="66" fill="#CFD8DE"/>
 <text x="180" y="613" text-anchor="middle" font-size="16" font-weight="600" fill="#0E2432">Calle Pueyrredón</text>
 </svg>
