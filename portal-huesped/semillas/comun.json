@@ -153,11 +153,41 @@
               "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}} (la letra i, minúscula): la última de la mano derecha al ingresar. Les sugerimos estacionar de cola."
             },
             {
+              "t": "img",
+              "solo": [
+                "5toa"
+              ],
+              "src": "images/mi-estadia/croquis-cochera-5toa.svg",
+              "alt": "Croquis orientativo: se entra por el portón negro, se sigue hacia el fondo y la cochera i es la última de la mano derecha"
+            },
+            {
+              "t": "nota",
+              "solo": [
+                "5toa"
+              ],
+              "x": "Croquis orientativo, sin escala."
+            },
+            {
               "t": "p",
               "solo": [
                 "8vob"
               ],
               "x": "Al pasar el portón, el sector de cocheras se extiende hacia el fondo del edificio. Su cochera es la {{cochera.letra}}: la primera de la mano derecha al ingresar. Les sugerimos estacionar de cola."
+            },
+            {
+              "t": "img",
+              "solo": [
+                "8vob"
+              ],
+              "src": "images/mi-estadia/croquis-cochera-8vob.svg",
+              "alt": "Croquis orientativo: se entra por el portón negro, se sigue hacia el fondo y la cochera Q es la primera de la mano derecha"
+            },
+            {
+              "t": "nota",
+              "solo": [
+                "8vob"
+              ],
+              "x": "Croquis orientativo, sin escala."
             },
             {
               "t": "h",
