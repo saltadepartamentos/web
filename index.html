@@ -467,13 +467,6 @@ Escribinos por WhatsApp
 
 <script src="depto-data.js"></script>
 <script>
-/* ============================================================
-   CONFIGURACIÓN
-   Reemplazar WORKER_URL por la URL del Cloudflare Worker una vez
-   desplegado (ver worker/README-DEPLOY.md). Mientras esté vacío,
-   el buscador solo muestra "Consultar" y linkea a WhatsApp.
-   ============================================================ */
-const WORKER_URL = "https://shiny-term-d478.deptos-travelsalta.workers.dev";
 
 /* API de tarifas y reservas directas. Devuelve precio y estado ya resueltos
    para los cinco deptos en una sola peticion. */
@@ -573,14 +566,10 @@ async function buscarDisponibilidad(checkin, checkout, personas){
   msgEl.className = "search-msg show";
   msgEl.textContent = "Buscando disponibilidad…";
 
-  /* Dos fuentes, en paralelo: el calendario de Airbnb dice que esta ocupado,
-     y la API de tarifas dice cuanto sale y si hay una reserva directa. */
+  /* Una sola fuente: la API del panel ya resuelve reservas directas, Airbnb y Booking. */
   personasBuscadas = personas;
   const pedir = (u) => fetch(u).then(r => r.ok ? r.json() : null).catch(() => null);
-  const [airbnb, tarifas] = await Promise.all([
-    WORKER_URL ? pedir(`${WORKER_URL}/availability?checkin=${checkin}&checkout=${checkout}`) : Promise.resolve(null),
-    pedir(`${TARIFAS_URL}/disponibilidad?checkin=${checkin}&checkout=${checkout}&personas=${personas}`)
-  ]);
+  const tarifas = await pedir(`${TARIFAS_URL}/disponibilidad?checkin=${checkin}&checkout=${checkout}&personas=${personas}`);
 
   if(!tarifas || !tarifas.deptos){
     msgEl.textContent = "No pudimos calcular las tarifas en este momento. Consultanos por WhatsApp y te respondemos enseguida.";
@@ -588,21 +577,8 @@ async function buscarDisponibilidad(checkin, checkout, personas){
     return;
   }
 
-  const airMap = {};
-  if(airbnb && airbnb.results) airbnb.results.forEach(r => { airMap[r.id] = r.available; });
-
   const estados = {};
-  tarifas.deptos.forEach(d => {
-    let estado = d.estado;
-    /* Airbnb manda sobre "disponible": si dice que esta ocupado, esta ocupado,
-       y si no sabemos que dice, no lo ofrecemos. Es la regla conservadora —
-       vale mas perder una consulta que vender dos veces la misma noche. */
-    if(estado === "disponible"){
-      if(airMap[d.slug] === false) estado = "ocupado";
-      else if(airMap[d.slug] !== true) estado = "sin-calendario";
-    }
-    estados[d.slug] = Object.assign({}, d, { estado: estado });
-  });
+  tarifas.deptos.forEach(d => { estados[d.slug] = d; });
 
   const libres = Object.values(estados).filter(e => e.estado === "disponible").length;
   if(libres === 0){
