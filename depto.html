@@ -283,6 +283,7 @@ if(!depto){
       <div class="bk-field"><label for="bk-email">Correo</label><input type="email" id="bk-email" placeholder="para mandarte la confirmación"></div>
       <div class="bk-field"><label for="bk-msg">Algo que debamos saber</label><textarea id="bk-msg" placeholder="Hora de llegada, cochera, lo que sea"></textarea></div>
       <div id="bk-error"></div>
+      <div id="bk-ts"></div>
       <button type="submit" class="bk-enviar" id="bk-enviar">Reservar</button>
       <p class="bk-nota">No se cobra nada acá. Recibimos tu pedido y te escribimos para coordinar el pago.</p>
     </form>`;
@@ -378,6 +379,18 @@ if(!depto){
     [fIn, fOut, fPer].forEach(el => el.addEventListener("change", cotizar));
     cotizar();
 
+    /* Verificación antihumanos: solo se ve si Cloudflare duda. Si falla, WhatsApp sigue
+       abriéndose, así que un huésped real nunca pierde su pedido. */
+    let tsToken = "";
+    window.__tsListo = function(){
+      turnstile.render("#bk-ts", { sitekey: "0x4AAAAAAFyzTbHFxI_Ie_bI", appearance: "interaction-only", language: "es", size: "flexible",
+        callback: (t) => { tsToken = t; }, "expired-callback": () => { tsToken = ""; }, "error-callback": () => { tsToken = ""; } });
+    };
+    const tsScript = document.createElement("script");
+    tsScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=__tsListo&render=explicit";
+    tsScript.async = true;
+    document.head.appendChild(tsScript);
+
     $("bk-form").addEventListener("submit", async function(e){
       e.preventDefault();
       const nombre = $("bk-nombre").value.trim();
@@ -421,7 +434,7 @@ if(!depto){
         const r = await fetch(`${API}/solicitud`, {
           method: "POST", headers: {"Content-Type":"application/json"},
           body: JSON.stringify({ depto: depto.id, entrada: fIn.value, salida: fOut.value,
-            personas: parseInt(fPer.value,10), nombre, email, telefono: tel, mensaje })
+            personas: parseInt(fPer.value,10), nombre, email, telefono: tel, mensaje, turnstile: tsToken })
         });
         const res = await r.json();
         guardada = r.ok && res.ok;
